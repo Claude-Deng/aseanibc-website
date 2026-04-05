@@ -4001,6 +4001,698 @@ body {
     margin: 0;
 }
 
+/* ==================== 出海活動頁面樣式 ==================== */
+
+/* 頁面橫幅 */
+.page-banner {
+    background: linear-gradient(135deg, #1a8ccc 0%, #0d5a85 100%);
+    padding: 140px 0 80px;
+    text-align: center;
+    color: white;
+}
+
+.page-title {
+    font-size: 2.8rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.page-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* 活動頁面主體 */
+.events-page {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+/* 活動卡片 */
+.event-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    background: white;
+    border-radius: 16px;
+    padding: 40px;
+    margin-bottom: 50px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+}
+
+/* 活動圖片區域 */
+.event-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.event-main-image {
+    width: 100%;
+    height: 280px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.event-main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.event-card:hover .event-main-image img {
+    transform: scale(1.05);
+}
+
+.event-thumbnails {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.event-thumbnails img {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.event-thumbnails img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* 活動信息區域 */
+.event-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.event-meta {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.event-tag {
+    background: linear-gradient(135deg, #1a8ccc 0%, #0d5a85 100%);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.event-date {
+    background: #f0f7ff;
+    color: #1a8ccc;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.event-title {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.event-location {
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.event-desc {
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    font-size: 1.05rem;
+}
+
+.event-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #1a8ccc 0%, #0d5a85 100%);
+    color: white;
+    padding: 14px 35px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+    box-shadow: 0 4px 15px rgba(26, 140, 204, 0.3);
+}
+
+.event-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(26, 140, 204, 0.4);
+}
+
+/* 活動聯繫區域 */
+.events-contact {
+    background: white;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.events-contact .section-title {
+    font-size: 2.2rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.contact-desc {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+}
+
+.contact-info-simple {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.contact-info-simple .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.1rem;
+    color: #2c3e50;
+}
+
+.contact-info-simple .contact-icon {
+    font-size: 1.5rem;
+}
+
+/* 響應式設計 */
+@media (max-width: 968px) {
+    .event-card {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .event-main-image {
+        height: 220px;
+    }
+    
+    .page-title {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .event-card {
+        padding: 25px;
+        margin-bottom: 30px;
+    }
+    
+    .event-title {
+        font-size: 1.5rem;
+    }
+    
+    .event-meta {
+        flex-wrap: wrap;
+    }
+    
+    .contact-info-simple {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .page-banner {
+        padding: 120px 0 60px;
+    }
+}
+
+/* ==================== 活動詳情頁樣式 ==================== */
+
+.event-detail-page {
+    padding: 60px 0;
+    background: #f8f9fa;
+}
+
+.event-detail-header {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.event-detail-meta {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.event-detail-location {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+/* 詳情頁圖片區域 */
+.event-detail-gallery {
+    margin-bottom: 50px;
+}
+
+.detail-main-image {
+    width: 100%;
+    height: 400px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.detail-main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.detail-thumbnails {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.detail-thumbnails img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.detail-thumbnails img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+/* 活動內容區塊 */
+.event-section {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.event-section .section-title {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #1a8ccc;
+}
+
+.event-content p {
+    color: #555;
+    line-height: 1.9;
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+}
+
+/* 亮點網格 */
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.highlight-item {
+    text-align: center;
+    padding: 30px 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.highlight-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.highlight-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.highlight-item h3 {
+    color: #2c3e50;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.highlight-item p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* 合作夥伴標籤 */
+.partners-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.partner-tag {
+    background: linear-gradient(135deg, #1a8ccc 0%, #0d5a85 100%);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: 500;
+}
+
+/* 媒體報導 */
+.media-coverage {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.media-item {
+    text-align: center;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+.media-item.highlight {
+    background: linear-gradient(135deg, #1a8ccc 0%, #0d5a85 100%);
+    color: white;
+}
+
+.media-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.media-item.highlight h4 {
+    color: white;
+}
+
+.media-item p {
+    color: #666;
+    margin: 0;
+}
+
+.media-item.highlight p {
+    color: rgba(255,255,255,0.9);
+}
+
+.big-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white !important;
+}
+
+/* 目標客戶 */
+.target-clients {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.client-tag {
+    background: #f0f7ff;
+    color: #1a8ccc;
+    padding: 12px 25px;
+    border-radius: 25px;
+    border: 2px solid #1a8ccc;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.client-tag:hover {
+    background: #1a8ccc;
+    color: white;
+}
+
+/* 課程模塊 */
+.course-modules {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.course-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 25px;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+.course-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.course-item h4 {
+    color: #2c3e50;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.course-item p {
+    color: #666;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* 投資模式 */
+.investment-modes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.investment-item {
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    text-align: center;
+    border-top: 4px solid #1a8ccc;
+}
+
+.investment-item h4 {
+    color: #2c3e50;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.investment-item p {
+    color: #666;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* 移民優勢 */
+.immigration-benefits {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 25px;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+.benefit-number {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #1a8ccc 0%, #0d5a85 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.benefit-item p {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.05rem;
+}
+
+/* 論壇議題 */
+.forum-topics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.topic-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+.topic-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a8ccc;
+    line-height: 1;
+}
+
+.topic-item h4 {
+    color: #2c3e50;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.topic-item p {
+    color: #666;
+    margin: 0;
+}
+
+/* 參會嘉賓 */
+.guest-types {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.guest-item {
+    text-align: center;
+    padding: 30px 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.guest-item:hover {
+    background: #1a8ccc;
+    color: white;
+}
+
+.guest-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.guest-item h4 {
+    color: #2c3e50;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.guest-item:hover h4 {
+    color: white;
+}
+
+.guest-item p {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.guest-item:hover p {
+    color: rgba(255,255,255,0.9);
+}
+
+/* 返回按鈕 */
+.event-nav {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.event-btn.secondary {
+    background: transparent;
+    color: #1a8ccc;
+    border: 2px solid #1a8ccc;
+}
+
+.event-btn.secondary:hover {
+    background: #1a8ccc;
+    color: white;
+}
+
+/* 詳情頁響應式 */
+@media (max-width: 968px) {
+    .highlights-grid,
+    .guest-types {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .media-coverage,
+    .investment-modes {
+        grid-template-columns: 1fr;
+    }
+    
+    .detail-main-image {
+        height: 300px;
+    }
+    
+    .detail-thumbnails {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .highlights-grid,
+    .guest-types,
+    .course-modules,
+    .immigration-benefits,
+    .forum-topics {
+        grid-template-columns: 1fr;
+    }
+    
+    .event-section {
+        padding: 25px;
+    }
+    
+    .detail-main-image {
+        height: 220px;
+    }
+    
+    .detail-thumbnails {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .detail-thumbnails img {
+        height: 80px;
+    }
+}
+
 /* Transformation Summary */
 .transformation-summary {
     margin: 40px 0;
