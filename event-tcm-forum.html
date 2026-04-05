@@ -5,6 +5,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>中歐論壇暨塞納博覽會 - 埃森國際商務諮詢有限公司</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* 圖片輪播樣式 */
+        .image-carousel {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 50px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+        
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+        
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+        }
+        
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .carousel-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel-dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+        
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            color: #333;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .carousel-arrow:hover {
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .carousel-arrow.prev { left: 20px; }
+        .carousel-arrow.next { right: 20px; }
+        
+        @media (max-width: 768px) {
+            .image-carousel {
+                height: 300px;
+            }
+            .carousel-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- 导航栏 -->
@@ -37,98 +127,172 @@
                 <h1>中歐論壇暨塞納博覽會</h1>
                 <div class="case-meta">
                     <div class="meta-item">
-                        <span class="meta-label">時間：</span>
-                        <span class="meta-value">2025年舉辦</span>
+                        <span class="meta-label">主題：</span>
+                        <span class="meta-value">乘APEC-SZ世界東風，展TCM-SZ創新成果</span>
                     </div>
                     <div class="meta-item">
                         <span class="meta-label">地點：</span>
                         <span class="meta-value">法國巴黎</span>
                     </div>
                     <div class="meta-item">
-                        <span class="meta-label">主題：</span>
+                        <span class="meta-label">核心議題：</span>
                         <span class="meta-value">中醫藥出海</span>
                     </div>
                 </div>
             </section>
 
-            <!-- 图片展示 -->
-            <div class="event-gallery animate-on-scroll">
-                <div class="gallery-main">
-                    <img src="eventPic/placeholder.png" alt="中歐論壇">
+            <!-- 图片轮播 -->
+            <div class="image-carousel animate-on-scroll" id="carousel">
+                <div class="carousel-track">
+                    <div class="carousel-slide">
+                        <img src="eventPic/tcm-forum-1.jpg" alt="中歐論壇暨塞納博覽會">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="eventPic/tcm-forum-2.jpg" alt="中醫藥展示">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="eventPic/tcm-forum-3.jpg" alt="論壇現場">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="eventPic/tcm-forum-4.jpg" alt="巴黎塞納河畔">
+                    </div>
                 </div>
-                <div class="gallery-thumbs">
-                    <img src="eventPic/placeholder.png" alt="論壇圖片1">
-                    <img src="eventPic/placeholder.png" alt="論壇圖片2">
-                    <img src="eventPic/placeholder.png" alt="論壇圖片3">
-                    <img src="eventPic/placeholder.png" alt="論壇圖片4">
+                <div class="carousel-arrow prev" onclick="moveCarousel(-1)">❮</div>
+                <div class="carousel-arrow next" onclick="moveCarousel(1)">❯</div>
+                <div class="carousel-nav">
+                    <div class="carousel-dot active" onclick="goToSlide(0)"></div>
+                    <div class="carousel-dot" onclick="goToSlide(1)"></div>
+                    <div class="carousel-dot" onclick="goToSlide(2)"></div>
+                    <div class="carousel-dot" onclick="goToSlide(3)"></div>
                 </div>
             </div>
 
             <!-- 内容区 -->
             <article class="case-content">
-                <!-- 项目背景 -->
+                <!-- 项目概述 -->
                 <section class="case-section animate-on-scroll">
-                    <h2>一、論壇背景</h2>
-                    <p>以中醫藥出海為核心議題的高規格國際交流平台，匯聚中歐雙方政府官員、醫療健康專家、企業領袖，共同探討中醫藥國際化發展路徑。</p>
+                    <h2>項目概述</h2>
+                    <p>第八屆中歐論壇暨塞納博覽會是一個以中醫藥出海為核心議題的高規格國際交流平台。論壇以「乘APEC-SZ世界東風，展TCM-SZ創新成果」為主題，將深圳作為中國中醫藥創新中心的成果向歐洲輸出，為中國中醫藥企業提供面向歐洲市場的展示窗口、政策對話通道和商業對接平台。</p>
+                    
+                    <p>本屆論壇匯聚中歐雙方的政府官員、醫療健康領域專家、中醫藥企業代表、投資機構和行業意見領袖，圍繞中醫藥國際化、中醫醫療服務出海、中藥產品歐盟認證、中歐健康產業合作等核心議題展開深度對話。論壇設置多場主題演講、圓桌對話、產品展示和商務對接會等環節，促進中醫藥產業在歐洲市場的合規化、品牌化和規模化發展。</p>
                     
                     <div class="case-highlight">
-                        <h3>論壇亮點</h3>
+                        <h3>論壇核心議題</h3>
                         <div class="highlight-grid">
                             <div class="highlight-item">
-                                <span class="highlight-icon">🏛️</span>
-                                <h4>政府官員</h4>
-                                <p>中歐雙方政府高層出席</p>
-                            </div>
-                            <div class="highlight-item">
-                                <span class="highlight-icon">⚕️</span>
-                                <h4>醫療專家</h4>
-                                <p>頂級醫療健康專家參與</p>
-                            </div>
-                            <div class="highlight-item">
                                 <span class="highlight-icon">🌿</span>
-                                <h4>中醫藥出海</h4>
-                                <p>展示創新成果與產品</p>
+                                <h4>中醫藥國際化</h4>
+                                <p>中醫藥全球發展趨勢與戰略路徑</p>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-icon">🏥</span>
+                                <h4>中醫醫療服務出海</h4>
+                                <p>中醫診療機構海外布局與運營</p>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-icon">📜</span>
+                                <h4>中藥產品歐盟認證</h4>
+                                <p>歐盟草藥藥品註冊與合規指導</p>
                             </div>
                             <div class="highlight-item">
                                 <span class="highlight-icon">🤝</span>
-                                <h4>產業合作</h4>
-                                <p>搭建中歐健康產業橋樑</p>
+                                <h4>中歐健康產業合作</h4>
+                                <p>健康產業投資與合作機會</p>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- 论坛议题 -->
+                <!-- 市场背景 -->
                 <section class="case-section animate-on-scroll">
-                    <h2>二、論壇議題</h2>
+                    <h2>市場背景與機遇</h2>
+                    <p>中醫藥作為中華民族的瑰寶，擁有數千年的臨床實踐積累和完整的理論體系，在全球健康領域的影響力持續攀升。據世界衛生組織統計，全球已有183個國家和地區使用中醫藥，針灸已被納入WHO國際疾病分類體系（ICD-11）。隨著「健康中國」戰略的深入推進和「一帶一路」倡議的持續發力，中醫藥出海已成為國家層面的重要戰略方向。</p>
                     
-                    <div class="structure-steps">
-                        <div class="structure-item">
-                            <div class="structure-number">1</div>
-                            <div class="structure-content">
-                                <h4>中醫藥國際化</h4>
-                                <p>中醫藥全球發展趨勢與機遇分析</p>
+                    <p>歐洲是中醫藥國際化的重要目標市場。歐盟擁有超過4.5億人口的消費市場，對自然療法、替代醫學和健康產品的接受度持續提高。法國作為歐洲中醫藥發展的前沿陣地，擁有歐洲最大的中醫藥教育和研究中心，巴黎塞納河畔更是中西文化交流的歷史性地標。中醫藥產品在歐洲市場的年增長率超過15%，產業出海空間巨大。</p>
+                    
+                    <p>然而，中醫藥企業在出海過程中面臨認證壁壘（歐盟草藥藥品註冊）、文化認知差異、渠道資源匱乏等核心挑戰。如何精準對接歐洲醫療體系、建立品牌信任、獲取合規准入，是中醫藥出海企業迫切需要解決的問題。高規格的國際論壇和博覽會能夠匯聚政策制定者、行業專家和商業資源，為中醫藥出海企業提供破局通道。</p>
+                </section>
+
+                <!-- 核心卖点 -->
+                <section class="case-section animate-on-scroll">
+                    <h2>核心賣點</h2>
+                    
+                    <h3>中醫藥出海核心平台</h3>
+                    <p>以「TCM-SZ」（中醫藥·深圳）為核心議題，聚焦中醫藥國際化全產業鏈——診療服務、產品認證、品牌建設、教育傳播，為中國中醫藥企業打通歐洲市場的戰略通道。</p>
+                    
+                    <h3>APEC + 深圳創新聯動</h3>
+                    <p>乘APEC深圳會議世界東風，將深圳作為中國中醫藥創新中心的成果向歐洲輸出，借助國家戰略東風提升企業出海的權威性和影響力。</p>
+                    
+                    <h3>政醫商深度對接</h3>
+                    <p>匯聚中歐政府衛生部門官員、醫療健康領域專家、中醫藥企業代表和投資機構，覆蓋政策解讀、歐盟認證指導、商業合作匹配等全環節，精準解決中醫藥出海的核心痛點。</p>
+                    
+                    <h3>多維合作機會</h3>
+                    <div class="policy-grid">
+                        <div class="policy-card">
+                            <h4>中藥材及中成藥出口</h4>
+                            <p>對接歐洲進口商、分銷商，拓展銷售渠道</p>
+                        </div>
+                        <div class="policy-card">
+                            <h4>中醫診療服務國際化</h4>
+                            <p>中醫診療機構海外布局、人才輸出</p>
+                        </div>
+                        <div class="policy-card">
+                            <h4>健康產品品牌建設</h4>
+                            <p>保健品、護膚品等中醫藥健康產品品牌出海</p>
+                        </div>
+                        <div class="policy-card">
+                            <h4>中醫教育與文化傳播</h4>
+                            <p>中醫教育合作、文化交流項目</p>
+                        </div>
+                    </div>
+                    
+                    <h3>國際媒體曝光</h3>
+                    <p>活動獲得中歐主流媒體報導，參與企業可獲得高價值的國際品牌曝光，助力中醫藥品牌在歐洲市場建立認知度和信任度。</p>
+                </section>
+
+                <!-- 论坛议程 -->
+                <section class="case-section animate-on-scroll">
+                    <h2>論壇議程設置</h2>
+                    <p>論壇設置多場主題演講、圓桌對話、產品展示和商務對接會等環節，為參會企業提供全方位的交流合作機會。</p>
+                    
+                    <div class="service-checklist">
+                        <div class="checklist-item">🎤 主題演講 - 中歐政府官員、行業專家分享政策趨勢與市場洞察</div>
+                        <div class="checklist-item">💬 圓桌對話 - 圍繞中醫藥國際化熱點議題展開深度討論</div>
+                        <div class="checklist-item">🏛️ 產品展示 - 中醫藥產品、技術、服務現場展示</div>
+                        <div class="checklist-item">🤝 商務對接會 - 一對一商務配對，精準對接合作夥伴</div>
+                        <div class="checklist-item">📋 歐盟認證工作坊 - 專業指導中藥產品歐盟註冊流程</div>
+                        <div class="checklist-item">🌐 投資路演 - 優質項目面向歐洲投資機構路演</div>
+                    </div>
+                </section>
+
+                <!-- 精准商务匹配 -->
+                <section class="case-section animate-on-scroll">
+                    <h2>精準商務匹配服務</h2>
+                    <p>論壇設有精準的商務匹配服務，參會企業可根據自身需求提前提交合作意向，由組委會進行一對一的商務配對。這種精準匹配機制能夠大大提高商務對接的效率和成功率，幫助企業快速找到目標客戶或合作夥伴。</p>
+                    
+                    <div class="consideration-list">
+                        <div class="consideration-item">
+                            <div class="consideration-content">
+                                <h4>提前提交合作意向</h4>
+                                <p>參會前詳細說明企業需求和合作方向</p>
                             </div>
                         </div>
-                        <div class="structure-item">
-                            <div class="structure-number">2</div>
-                            <div class="structure-content">
-                                <h4>醫療服務出海</h4>
-                                <p>中醫診療機構海外拓展策略</p>
+                        <div class="consideration-item">
+                            <div class="consideration-content">
+                                <h4>專業配對服務</h4>
+                                <p>組委會根據企業需求進行精準匹配</p>
                             </div>
                         </div>
-                        <div class="structure-item">
-                            <div class="structure-number">3</div>
-                            <div class="structure-content">
-                                <h4>產品認證</h4>
-                                <p>中藥產品歐盟認證路徑與標準</p>
+                        <div class="consideration-item">
+                            <div class="consideration-content">
+                                <h4>一對一商務會談</h4>
+                                <p>安排與目標客戶或合作夥伴的專屬會談時間</p>
                             </div>
                         </div>
-                        <div class="structure-item">
-                            <div class="structure-number">4</div>
-                            <div class="structure-content">
-                                <h4>產業合作</h4>
-                                <p>中歐健康產業合作模式探討</p>
+                        <div class="consideration-item">
+                            <div class="consideration-content">
+                                <h4>會後跟進支持</h4>
+                                <p>協助跟進商務洽談進展，促成合作落地</p>
                             </div>
                         </div>
                     </div>
@@ -136,26 +300,68 @@
 
                 <!-- 适合人群 -->
                 <section class="case-section animate-on-scroll">
-                    <h2>三、推薦參與對象</h2>
-                    <div class="challenge-box">
-                        <h4>目標群體</h4>
-                        <ul class="case-list">
-                            <li>中醫藥企業，尋求國際化發展路徑</li>
-                            <li>中醫診療機構/連鎖品牌，計劃出海拓展</li>
-                            <li>醫療器械/大健康企業，關注歐盟市場</li>
-                            <li>健康產業投資者，尋找優質項目</li>
-                        </ul>
+                    <h2>推薦參會對象</h2>
+                    <div class="consideration-list">
+                        <div class="consideration-item">
+                            <div class="consideration-content">
+                                <h4>中醫藥企業</h4>
+                                <p>有中藥材、中成藥出口需求的生產企業</p>
+                            </div>
+                        </div>
+                        <div class="consideration-item">
+                            <div class="consideration-content">
+                                <h4>中醫診療機構</h4>
+                                <p>希望拓展海外市場的中醫診所、連鎖品牌</p>
+                            </div>
+                        </div>
+                        <div class="consideration-item">
+                            <div class="consideration-content">
+                                <h4>健康產品企業</h4>
+                                <p>保健品、護膚品等中醫藥健康產品企業</p>
+                            </div>
+                        </div>
+                        <div class="consideration-item">
+                            <div class="consideration-content">
+                                <h4>醫療器械企業</h4>
+                                <p>中醫醫療器械、大健康設備製造商</p>
+                            </div>
+                        </div>
+                        <div class="consideration-item">
+                            <div class="consideration-content">
+                                <h4>投資機構</h4>
+                                <p>關注中醫藥產業的投資基金、戰略投資者</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 埃森服务 -->
+                <section class="case-section animate-on-scroll">
+                    <h2>埃森國際服務優勢</h2>
+                    <p>埃森國際是本屆中歐論壇暨塞納博覽會中國區的重要合作夥伴，負責中國區中醫藥及相關健康產業企業的招募、組織和商務對接服務。我們與論壇組委會保持著緊密的溝通和協作關係。</p>
+                    
+                    <p>基於埃森國際在中歐商業資源整合方面的專業能力，我們能夠為中國參會企業提供從行前諮詢、商務方案定製、到會期全程陪同和會後跟進的全鏈條服務。我們的團隊擁有豐富的國際商務活動組織經驗，能夠確保企業在論壇期間獲得最大化的商業回報。</p>
+                    
+                    <p>此外，埃森國際依托自身在法律諮詢領域的專業資源（包括15年+中國法律實務經驗和17年+跨境法律服務經驗的法律顧問團隊），可為中醫藥出海企業在歐盟產品認證、知識產權保護、合規架構設計等方面提供延伸服務，幫助企業從參會對接走向實際合作落地。</p>
+                    
+                    <div class="service-checklist">
+                        <div class="checklist-item">📋 行前諮詢服務 - 了解企業需求，制定參會方案</div>
+                        <div class="checklist-item">💼 商務方案定製 - 根據企業特點設計商務對接策略</div>
+                        <div class="checklist-item">🤝 會期全程陪同 - 專業團隊現場支持</div>
+                        <div class="checklist-item">📊 會後跟進服務 - 協助跟進商務洽談進展</div>
+                        <div class="checklist-item">⚖️ 法律延伸服務 - 歐盟認證、知識產權、合規架構</div>
                     </div>
                 </section>
 
                 <!-- 联系方式 -->
                 <section class="case-section animate-on-scroll">
-                    <h2>四、聯繫方式</h2>
-                    <p>對本次論壇感興趣？歡迎聯繫我們獲取詳細議程和參會資料。</p>
+                    <h2>聯繫我們</h2>
+                    <p>對中歐論壇暨塞納博覽會感興趣？歡迎聯繫我們獲取詳細議程和參會資料。</p>
                     <div class="service-checklist">
                         <div class="checklist-item">📞 電話：+8613423849513</div>
                         <div class="checklist-item">✉️ 郵箱：claudedeng@aseanibc.com</div>
                         <div class="checklist-item">💬 微信：+8613423849513（同號）</div>
+                        <div class="checklist-item">🌐 網站：www.aseanibc.com</div>
                     </div>
                 </section>
             </article>
@@ -196,6 +402,35 @@
     </footer>
 
     <script>
+        // 輪播功能
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const track = document.querySelector('.carousel-track');
+        
+        function updateCarousel() {
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+        
+        function moveCarousel(direction) {
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            updateCarousel();
+        }
+        
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+        
+        // 自動輪播
+        setInterval(() => {
+            moveCarousel(1);
+        }, 5000);
+        
+        // 滾動動畫
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
