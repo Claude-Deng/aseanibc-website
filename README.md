@@ -5,17 +5,28 @@
 
 ## 文件結構
 ```
-├── index.html          # 首頁
-├── about.html          # 關於我們
-├── services.html       # 服務內容
-├── cases.html          # 項目經驗
-├── team.html           # 團隊介紹
-├── contact.html        # 聯繫我們
-├── style.css           # 全局樣式表
-├── indexPic/           # 首頁圖片資源
-├── servicePic/         # 服務內容圖片資源
-├── casePic/            # 項目經驗圖片資源
-└── teamPic/            # 團隊介紹圖片資源
+├── index.html              # 首頁
+├── about.html              # 關於我們
+├── services.html           # 服務內容
+├── cases.html              # 項目經驗
+├── team.html               # 團隊介紹
+├── contact.html            # 聯繫我們
+├── events.html             # 出海活動列表
+├── event-copenhagen.html   # 活動詳情：哥本哈根龍舟文化節
+├── event-summer-camp.html  # 活動詳情：費城名校夏令營
+├── event-nz-investment.html # 活動詳情：新西蘭光伏投資
+├── event-tcm-forum.html    # 活動詳情：中歐論壇暨塞納博覽會
+├── style.css               # 全局樣式表
+├── indexPic/               # 首頁圖片資源
+├── servicePic/             # 服務內容圖片資源
+├── casePic/                # 項目經驗圖片資源
+├── teamPic/                # 團隊介紹圖片資源
+└── eventPic/               # 出海活動圖片資源
+    ├── copenhagen-1~4.jpg  # 哥本哈根活動輪播圖
+    ├── summer-camp-1~4.jpg # 夏令營活動輪播圖
+    ├── nz-1~6.jpg          # 新西蘭投資活動輪播圖
+    ├── tcm-1~6.jpg         # 中歐論壇活動輪播圖
+    └── thumb-*.jpg         # 活動列表縮略圖
 ```
 
 ## 本地預覽
