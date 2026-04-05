@@ -1,0 +1,17 @@
+{
+  "name": "aisen-international-website",
+  "version": "1.0.0",
+  "description": "埃森国际商务咨询有限公司官方網站",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "serve": "npx http-server -p 8000 -o",
+    "build": "bash build.sh"
+  },
+  "keywords": [
+    "website",
+    "business",
+    "consulting"
+  ],
+  "author": "",
+  "license": "ISC"
+}
