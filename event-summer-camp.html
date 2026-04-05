@@ -16,7 +16,7 @@
             margin-bottom: 50px;
             box-shadow: 0 8px 30px rgba(0,0,0,0.12);
         }
-        
+
         .carousel-track {
             display: flex;
             transition: transform 0.5s ease;
@@ -31,7 +31,8 @@
         .carousel-slide img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            background-color: #f5f5f5;
         }
         
         .carousel-nav {
@@ -120,7 +121,7 @@
             <div class="back-nav animate-on-scroll">
                 <a href="events.html">← 返回出海活動</a>
             </div>
-
+    
             <!-- 标题区 -->
             <section class="case-header animate-on-scroll">
                 <div class="case-category">出海活動｜國際教育</div>
@@ -140,7 +141,7 @@
                     </div>
                 </div>
             </section>
-
+    
             <!-- 图片轮播 -->
             <div class="image-carousel animate-on-scroll" id="carousel">
                 <div class="carousel-track">
@@ -166,7 +167,7 @@
                     <div class="carousel-dot" onclick="goToSlide(3)"></div>
                 </div>
             </div>
-
+    
             <!-- 内容区 -->
             <article class="case-content">
                 <!-- 项目概述 -->
@@ -175,34 +176,7 @@
                     <p>美國費城名校夏令營以賓夕法尼亞大學為主要營地，地處美國東海岸學術核心區——費城。費城不僅是賓夕法尼亞大學的所在地，距離哈佛大學、耶魯大學、普林斯頓大學、約翰霍普金斯大學等頂尖名校均在數小時車程範圍內，學術資源密度極高。</p>
                     
                     <p>項目採用高端精品小團模式，每團僅限5-10人，確保教學質量和圈層體驗。課程體系涵蓋四大模塊：AI與STEM科技探索、生活技能實踐（如Cooking Club）、跨文化交流（與美國本土學生及華裔學生互動）、自然科學探索（博物館、實驗室參訪等），可根據客戶需求個性化組合。</p>
-                    
-                    <div class="case-highlight">
-                        <h3>四大課程模塊</h3>
-                        <div class="highlight-grid">
-                            <div class="highlight-item">
-                                <span class="highlight-icon">🤖</span>
-                                <h4>AI與STEM科技探索</h4>
-                                <p>Python人工智能、機器人編程、創客課程</p>
-                            </div>
-                            <div class="highlight-item">
-                                <span class="highlight-icon">🍳</span>
-                                <h4>生活技能實踐</h4>
-                                <p>Cooking Club、獨立生活能力培養</p>
-                            </div>
-                            <div class="highlight-item">
-                                <span class="highlight-icon">🌍</span>
-                                <h4>跨文化交流</h4>
-                                <p>與美國本土學生及華裔學生互動交流</p>
-                            </div>
-                            <div class="highlight-item">
-                                <span class="highlight-icon">🔬</span>
-                                <h4>自然科學探索</h4>
-                                <p>博物館、實驗室參訪，激發科學興趣</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
+    
                 <!-- 市场背景 -->
                 <section class="case-section animate-on-scroll">
                     <h2>市場背景與需求</h2>
@@ -212,7 +186,7 @@
                     
                     <p>與此同時，8-15歲正是孩子認知發展和價值觀形成的關鍵期。一次有深度的海外學術體驗，不僅能開拓國際視野，更能幫助孩子和家長更早明確留學方向，為未來的升學競爭積累先發優勢。</p>
                 </section>
-
+    
                 <!-- 核心卖点 -->
                 <section class="case-section animate-on-scroll">
                     <h2>核心賣點</h2>
@@ -246,7 +220,7 @@
                         </div>
                     </div>
                 </section>
-
+    
                 <!-- 行程安排 -->
                 <section class="case-section animate-on-scroll">
                     <h2>16天深度行程安排</h2>
@@ -264,7 +238,7 @@
                     
                     <p style="margin-top: 20px;">暑假7月中旬開始出發，可選兩周或四周不同團期。全程酒店住宿（位置有保障、服務完善、一人一間），老師全程陪同。</p>
                 </section>
-
+    
                 <!-- 住宿与保障 -->
                 <section class="case-section animate-on-scroll">
                     <h2>住宿與安全保障</h2>
@@ -297,7 +271,7 @@
                         </div>
                     </div>
                 </section>
-
+    
                 <!-- 适合人群 -->
                 <section class="case-section animate-on-scroll">
                     <h2>推薦參與對象</h2>
@@ -328,7 +302,7 @@
                         </div>
                     </div>
                 </section>
-
+    
                 <!-- 埃森服务 -->
                 <section class="case-section animate-on-scroll">
                     <h2>埃森國際服務優勢</h2>
@@ -347,7 +321,7 @@
                         <div class="checklist-item">⚖️ 延伸法律服務 - 為有移民規劃的家庭提供諮詢</div>
                     </div>
                 </section>
-
+    
                 <!-- 联系方式 -->
                 <section class="case-section animate-on-scroll">
                     <h2>聯繫我們</h2>
@@ -355,12 +329,12 @@
                     <div class="service-checklist">
                         <div class="checklist-item">📞 電話：+8613423849513</div>
                         <div class="checklist-item">✉️ 郵箱：claudedeng@aseanibc.com</div>
-                        <div class="checklist-item">💬 微信：+8613423849513（同號）</div>
-                        <div class="checklist-item">🌐 網站：www.aseanibc.com</div>
+                        <div class="checklist-item">💬 微信：5311667</div>
+                        
                     </div>
                 </section>
             </article>
-
+    
             <!-- 底部导航 -->
             <div class="case-footer animate-on-scroll">
                 <a href="events.html" class="btn btn-primary">查看更多活動</a>
@@ -368,7 +342,7 @@
             </div>
         </div>
     </main>
-
+    
     <!-- 页脚 -->
     <footer class="footer">
         <div class="container">
@@ -395,13 +369,17 @@
             </div>
         </div>
     </footer>
-
+    
     <script>
-        // 輪播功能
+        // 輪播功能 - 左右擺動 + 鼠標懸停暫停
         let currentSlide = 0;
         const slides = document.querySelectorAll('.carousel-slide');
         const dots = document.querySelectorAll('.carousel-dot');
         const track = document.querySelector('.carousel-track');
+        const carousel = document.getElementById('carousel');
+        let isPaused = false;
+        let autoplayInterval;
+        let direction = 1; // 1 = 向右, -1 = 向左
         
         function updateCarousel() {
             track.style.transform = `translateX(-${currentSlide * 100}%)`;
@@ -410,27 +388,57 @@
             });
         }
         
-        function moveCarousel(direction) {
-            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+        function moveCarousel(dir) {
+            currentSlide += dir;
+            // 到達邊界時反轉方向
+            if (currentSlide >= slides.length - 1) {
+                currentSlide = slides.length - 1;
+                direction = -1;
+            } else if (currentSlide <= 0) {
+                currentSlide = 0;
+                direction = 1;
+            }
             updateCarousel();
         }
         
         function goToSlide(index) {
             currentSlide = index;
+            // 根據點擊位置決定接下來的方向
+            direction = (currentSlide < slides.length - 1) ? 1 : -1;
             updateCarousel();
         }
         
-        // 自動輪播
-        setInterval(() => {
-            moveCarousel(1);
-        }, 5000);
+        function startAutoplay() {
+            autoplayInterval = setInterval(() => {
+                if (!isPaused) {
+                    moveCarousel(direction);
+                }
+            }, 5000);
+        }
+        
+        function stopAutoplay() {
+            clearInterval(autoplayInterval);
+        }
+        
+        // 鼠標懸停暫停
+        if (carousel) {
+            carousel.addEventListener('mouseenter', () => {
+                isPaused = true;
+            });
+            carousel.addEventListener('mouseleave', () => {
+                isPaused = false;
+            });
+        }
+        
+        // 啟動自動輪播
+        startAutoplay();
         
         // 滾動動畫
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
-
+    
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -438,7 +446,7 @@
                 }
             });
         }, observerOptions);
-
+    
         document.querySelectorAll('.animate-on-scroll').forEach(el => {
             observer.observe(el);
         });

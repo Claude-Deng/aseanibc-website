@@ -16,7 +16,7 @@
             margin-bottom: 50px;
             box-shadow: 0 8px 30px rgba(0,0,0,0.12);
         }
-        
+
         .carousel-track {
             display: flex;
             transition: transform 0.5s ease;
@@ -31,7 +31,8 @@
         .carousel-slide img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            background-color: #f5f5f5;
         }
         
         .carousel-nav {
@@ -120,7 +121,7 @@
             <div class="back-nav animate-on-scroll">
                 <a href="events.html">← 返回出海活動</a>
             </div>
-
+    
             <!-- 标题区 -->
             <section class="case-header animate-on-scroll">
                 <div class="case-category">出海活動｜海外投資</div>
@@ -140,7 +141,7 @@
                     </div>
                 </div>
             </section>
-
+    
             <!-- 图片轮播 -->
             <div class="image-carousel animate-on-scroll" id="carousel">
                 <div class="carousel-track">
@@ -148,13 +149,19 @@
                         <img src="eventPic/nz-1.jpg" alt="新西蘭光伏儲能項目">
                     </div>
                     <div class="carousel-slide">
-                        <img src="eventPic/nz-2.jpg" alt="光伏電站">
+                        <img src="eventPic/nz-2.jpg" alt="項目展示">
                     </div>
                     <div class="carousel-slide">
-                        <img src="eventPic/nz-3.jpg" alt="儲能設施">
+                        <img src="eventPic/nz-3.jpg" alt="技術方案">
                     </div>
                     <div class="carousel-slide">
-                        <img src="eventPic/nz-4.jpg" alt="新西蘭風光">
+                        <img src="eventPic/nz-4.jpg" alt="數據圖表">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="eventPic/nz-5.jpg" alt="現場照片">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="eventPic/nz-6.jpg" alt="合作展示">
                     </div>
                 </div>
                 <div class="carousel-arrow prev" onclick="moveCarousel(-1)">❮</div>
@@ -164,9 +171,11 @@
                     <div class="carousel-dot" onclick="goToSlide(1)"></div>
                     <div class="carousel-dot" onclick="goToSlide(2)"></div>
                     <div class="carousel-dot" onclick="goToSlide(3)"></div>
+                    <div class="carousel-dot" onclick="goToSlide(4)"></div>
+                    <div class="carousel-dot" onclick="goToSlide(5)"></div>
                 </div>
             </div>
-
+    
             <!-- 内容区 -->
             <article class="case-content">
                 <!-- 项目概述 -->
@@ -176,28 +185,8 @@
                     
                     <p>本項目為投資者提供了一個獨特的機會：通過投資新西蘭綠色能源項目，不僅可以獲得穩定的投資回報，還可以對接新西蘭投資移民永久居留資格，實現「投資+移民」一步到位的目標。</p>
                     
-                    <div class="case-highlight">
-                        <h3>投資模式</h3>
-                        <div class="highlight-grid">
-                            <div class="highlight-item">
-                                <span class="highlight-icon">🏢</span>
-                                <h4>公司層面股權投資</h4>
-                                <p>投資 Daybreak Energy 公司股權，分享企業成長收益</p>
-                            </div>
-                            <div class="highlight-item">
-                                <span class="highlight-icon">⚡</span>
-                                <h4>具體項目獨立融資</h4>
-                                <p>參與特定光伏儲能項目投資，收益穩定可預期</p>
-                            </div>
-                            <div class="highlight-item">
-                                <span class="highlight-icon">🏔️</span>
-                                <h4>南島黑啟動小項目</h4>
-                                <p>南島地區小型項目，門檻更低，靈活性更高</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
+            
+    
                 <!-- 市场背景 -->
                 <section class="case-section animate-on-scroll">
                     <h2>市場背景與機遇</h2>
@@ -207,7 +196,7 @@
                     
                     <p>與此同時，新西蘭光伏+儲能市場尚處起步階段，競爭者少。項目方擁有當地稀缺的全牌照資質，國際企業（如比亞迪、陽光電源）因缺本地施工及電網資質難以進入，護城河深厚。</p>
                 </section>
-
+    
                 <!-- 项目方背景 -->
                 <section class="case-section animate-on-scroll">
                     <h2>項目方背景</h2>
@@ -232,7 +221,7 @@
                         </div>
                     </div>
                 </section>
-
+    
                 <!-- 核心卖点 -->
                 <section class="case-section animate-on-scroll">
                     <h2>核心賣點</h2>
@@ -249,7 +238,7 @@
                     <h3>優質資產配置</h3>
                     <p>新西蘭政治穩定、法制健全、匯率穩定，是理想的海外資產配置目的地。光伏儲能項目作為基礎設施類資產，具有收益穩定、抗通脹、長期持有等特點，適合家族財富傳承。</p>
                 </section>
-
+    
                 <!-- 投资模式详解 -->
                 <section class="case-section animate-on-scroll">
                     <h2>投資模式詳解</h2>
@@ -266,7 +255,7 @@
                     <h3>「先債後股」靈活模式</h3>
                     <p>3年債券期內享有穩定利息回報+永久居民身份全部權益；3年期滿後可選擇：① 退出投資，收回本金；② 轉為股權，享受更高收益。靈活滿足不同投資者的需求。</p>
                 </section>
-
+    
                 <!-- 移民政策 -->
                 <section class="case-section animate-on-scroll">
                     <h2>新西蘭投資移民政策</h2>
@@ -299,7 +288,7 @@
                         </div>
                     </div>
                 </section>
-
+    
                 <!-- 适合人群 -->
                 <section class="case-section animate-on-scroll">
                     <h2>推薦投資者類型</h2>
@@ -324,7 +313,7 @@
                         </div>
                     </div>
                 </section>
-
+    
                 <!-- 埃森服务 -->
                 <section class="case-section animate-on-scroll">
                     <h2>埃森國際服務優勢</h2>
@@ -338,7 +327,7 @@
                         <div class="checklist-item">📊 投後管理服務 - 定期跟進項目進展，提供投資報告</div>
                     </div>
                 </section>
-
+    
                 <!-- 联系方式 -->
                 <section class="case-section animate-on-scroll">
                     <h2>聯繫我們</h2>
@@ -346,12 +335,12 @@
                     <div class="service-checklist">
                         <div class="checklist-item">📞 電話：+8613423849513</div>
                         <div class="checklist-item">✉️ 郵箱：claudedeng@aseanibc.com</div>
-                        <div class="checklist-item">💬 微信：+8613423849513（同號）</div>
-                        <div class="checklist-item">🌐 網站：www.aseanibc.com</div>
+                        <div class="checklist-item">💬 微信：5311667</div>
+                        
                     </div>
                 </section>
             </article>
-
+    
             <!-- 底部导航 -->
             <div class="case-footer animate-on-scroll">
                 <a href="events.html" class="btn btn-primary">查看更多活動</a>
@@ -359,7 +348,7 @@
             </div>
         </div>
     </main>
-
+    
     <!-- 页脚 -->
     <footer class="footer">
         <div class="container">
@@ -386,13 +375,17 @@
             </div>
         </div>
     </footer>
-
+    
     <script>
-        // 輪播功能
+        // 輪播功能 - 左右擺動 + 鼠標懸停暫停
         let currentSlide = 0;
         const slides = document.querySelectorAll('.carousel-slide');
         const dots = document.querySelectorAll('.carousel-dot');
         const track = document.querySelector('.carousel-track');
+        const carousel = document.getElementById('carousel');
+        let isPaused = false;
+        let autoplayInterval;
+        let direction = 1; // 1 = 向右, -1 = 向左
         
         function updateCarousel() {
             track.style.transform = `translateX(-${currentSlide * 100}%)`;
@@ -401,27 +394,57 @@
             });
         }
         
-        function moveCarousel(direction) {
-            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+        function moveCarousel(dir) {
+            currentSlide += dir;
+            // 到達邊界時反轉方向
+            if (currentSlide >= slides.length - 1) {
+                currentSlide = slides.length - 1;
+                direction = -1;
+            } else if (currentSlide <= 0) {
+                currentSlide = 0;
+                direction = 1;
+            }
             updateCarousel();
         }
         
         function goToSlide(index) {
             currentSlide = index;
+            // 根據點擊位置決定接下來的方向
+            direction = (currentSlide < slides.length - 1) ? 1 : -1;
             updateCarousel();
         }
         
-        // 自動輪播
-        setInterval(() => {
-            moveCarousel(1);
-        }, 5000);
+        function startAutoplay() {
+            autoplayInterval = setInterval(() => {
+                if (!isPaused) {
+                    moveCarousel(direction);
+                }
+            }, 5000);
+        }
+        
+        function stopAutoplay() {
+            clearInterval(autoplayInterval);
+        }
+        
+        // 鼠標懸停暫停
+        if (carousel) {
+            carousel.addEventListener('mouseenter', () => {
+                isPaused = true;
+            });
+            carousel.addEventListener('mouseleave', () => {
+                isPaused = false;
+            });
+        }
+        
+        // 啟動自動輪播
+        startAutoplay();
         
         // 滾動動畫
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
-
+    
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -429,7 +452,7 @@
                 }
             });
         }, observerOptions);
-
+    
         document.querySelectorAll('.animate-on-scroll').forEach(el => {
             observer.observe(el);
         });
