@@ -11,6 +11,9 @@
     <header class="header">
         <div class="container">
             <div class="logo">埃森国际商务咨询有限公司</div>
+            <button class="menu-toggle" aria-label="打开菜单" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
             <nav class="nav">
                 <a href="index.html" class="active">首页</a>
                 <a href="about.html">關於我們</a>
@@ -156,6 +159,34 @@
         document.querySelectorAll('.animate-on-scroll').forEach(el => {
             observer.observe(el);
         });
+
+        // 汉堡菜单功能
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('.nav');
+        
+        if (menuToggle && nav) {
+            // 点击汉堡按钮切换菜单
+            menuToggle.addEventListener('click', () => {
+                const isOpen = nav.classList.toggle('nav-open');
+                menuToggle.setAttribute('aria-expanded', isOpen);
+            });
+            
+            // 点击导航链接关闭菜单
+            nav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    nav.classList.remove('nav-open');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                });
+            });
+            
+            // 点击页面其他区域关闭菜单
+            document.addEventListener('click', (e) => {
+                if (!nav.contains(e.target) && !menuToggle.contains(e.target)) {
+                    nav.classList.remove('nav-open');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
     </script>
 
 </body>
