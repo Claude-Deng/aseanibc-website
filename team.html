@@ -11,6 +11,9 @@
     <header class="header">
         <div class="container">
             <div class="logo">埃森国际商务咨询有限公司</div>
+            <button class="menu-toggle" aria-label="打开菜单" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
             <nav class="nav">
                 <a href="index.html">首页</a>
                 <a href="about.html">關於我們</a>
@@ -20,6 +23,7 @@
                 <a href="team.html" class="active">團隊介紹</a>
                 <a href="contact.html">聯繫我們</a>
             </nav>
+            <div class="nav-overlay"></div>
         </div>
     </header>
 
@@ -348,6 +352,42 @@
         document.querySelectorAll('.animate-on-scroll').forEach(el => {
             observer.observe(el);
         });
+
+        // 汉堡菜单功能
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('.nav');
+        const navOverlay = document.querySelector('.nav-overlay');
+        
+        if (menuToggle && nav) {
+            // 点击汉堡按钮切换菜单
+            menuToggle.addEventListener('click', () => {
+                const isOpen = nav.classList.toggle('nav-open');
+                menuToggle.setAttribute('aria-expanded', isOpen);
+                if (navOverlay) {
+                    navOverlay.classList.toggle('active', isOpen);
+                }
+            });
+            
+            // 点击导航链接关闭菜单
+            nav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    nav.classList.remove('nav-open');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    if (navOverlay) {
+                        navOverlay.classList.remove('active');
+                    }
+                });
+            });
+            
+            // 点击遮罩层关闭菜单
+            if (navOverlay) {
+                navOverlay.addEventListener('click', () => {
+                    nav.classList.remove('nav-open');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    navOverlay.classList.remove('active');
+                });
+            }
+        }
     </script>
 
 </body>
