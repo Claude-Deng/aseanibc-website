@@ -4873,45 +4873,6 @@ img {
 }
 
 /* 響應式設計 */
-@media (max-width: 968px) {
-    .event-card {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    
-    .event-main-image {
-        height: 220px;
-    }
-    
-    .page-title {
-        font-size: 2.2rem;
-    }
-}
-
-@media (max-width: 640px) {
-    .event-card {
-        padding: 25px;
-        margin-bottom: 30px;
-    }
-    
-    .event-title {
-        font-size: 1.5rem;
-    }
-    
-    .event-meta {
-        flex-wrap: wrap;
-    }
-    
-    .contact-info-simple {
-        flex-direction: column;
-        gap: 20px;
-    }
-    
-    .page-banner {
-        padding: 120px 0 60px;
-    }
-}
-
 /* ==================== 活動詳情頁樣式 ==================== */
 
 .event-detail-page {
@@ -5537,11 +5498,150 @@ img {
     box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
-/* 活動列表頁響應式 */
-@media (max-width: 968px) {
+/* ============================================
+   Events Page Responsive - Milestone 6
+   ============================================ */
+
+/* Mobile: < 576px */
+@media (max-width: 575px) {
+    .events-page {
+        padding: 80px 0 40px;
+    }
+    
+    .page-header {
+        margin-bottom: 30px;
+    }
+    
+    .page-header h1 {
+        font-size: var(--font-xl);
+        letter-spacing: 1px;
+    }
+    
+    .page-header .subtitle {
+        font-size: var(--font-sm);
+    }
+    
+    .events-list .event-card {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+        margin-bottom: 25px;
+        border-radius: 12px;
+    }
+    
+    .event-image {
+        height: 180px;
+        border-radius: 8px;
+    }
+    
+    .event-content .event-meta {
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 12px;
+    }
+    
+    .event-tag {
+        font-size: var(--font-xs);
+        padding: 4px 10px;
+    }
+    
+    .event-date {
+        font-size: var(--font-xs);
+    }
+    
+    .event-content .event-title {
+        font-size: var(--font-lg);
+        margin-bottom: 10px;
+        line-height: 1.4;
+    }
+    
+    .event-location {
+        font-size: var(--font-sm);
+        margin-bottom: 10px;
+    }
+    
+    .event-desc {
+        font-size: var(--font-sm);
+        line-height: 1.7;
+        margin-bottom: 15px;
+    }
+    
+    .event-content .btn-primary {
+        padding: 10px 25px;
+        font-size: var(--font-sm);
+        align-self: flex-start;
+    }
+    
+    .events-contact {
+        padding: 40px 20px;
+        margin-top: 40px;
+        border-radius: 12px;
+    }
+    
+    .events-contact h2 {
+        font-size: var(--font-xl);
+        margin-bottom: 12px;
+    }
+    
+    .events-contact .contact-desc {
+        font-size: var(--font-sm);
+        margin-bottom: 25px;
+    }
+    
+    .contact-simple {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .contact-item {
+        font-size: var(--font-sm);
+    }
+    
+    .gallery-main {
+        height: 200px;
+    }
+    
+    .gallery-thumbs {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    
+    .gallery-thumbs img {
+        height: 70px;
+    }
+}
+
+/* Tablet: 576px - 767px */
+@media (min-width: 576px) and (max-width: 767px) {
+    .events-page {
+        padding: 90px 0 50px;
+    }
+    
     .events-list .event-card {
         grid-template-columns: 1fr;
         gap: 25px;
+        padding: 25px;
+    }
+    
+    .event-image {
+        height: 220px;
+    }
+    
+    .page-header h1 {
+        font-size: 32px;
+    }
+    
+    .gallery-main {
+        height: 280px;
+    }
+}
+
+/* Tablet/Desktop: 768px - 991px */
+@media (min-width: 768px) and (max-width: 991px) {
+    .events-list .event-card {
+        grid-template-columns: 280px 1fr;
+        gap: 30px;
+        padding: 30px;
     }
     
     .event-image {
@@ -5549,45 +5649,13 @@ img {
     }
     
     .page-header h1 {
-        font-size: 2.2rem;
-    }
-    
-    .gallery-main {
-        height: 300px;
+        font-size: 36px;
     }
 }
 
-@media (max-width: 640px) {
-    .events-list .event-card {
-        padding: 25px;
-        margin-bottom: 25px;
-    }
-    
-    .event-content .event-title {
-        font-size: 1.4rem;
-    }
-    
-    .events-contact {
-        padding: 40px 25px;
-    }
-    
-    .contact-simple {
-        flex-direction: column;
-        gap: 20px;
-    }
-    
-    .gallery-main {
-        height: 220px;
-    }
-    
-    .gallery-thumbs {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-    
-    .gallery-thumbs img {
-        height: 80px;
-    }
+/* Desktop: >= 992px */
+@media (min-width: 992px) {
+    /* Default styles apply */
 }
 
 /* Transformation Summary */
