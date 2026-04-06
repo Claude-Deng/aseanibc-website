@@ -23,6 +23,7 @@
                 <a href="team.html">團隊介紹</a>
                 <a href="contact.html">聯繫我們</a>
             </nav>
+            <div class="nav-overlay"></div>
         </div>
     </header>
 
@@ -163,12 +164,16 @@
         // 汉堡菜单功能
         const menuToggle = document.querySelector('.menu-toggle');
         const nav = document.querySelector('.nav');
+        const navOverlay = document.querySelector('.nav-overlay');
         
         if (menuToggle && nav) {
             // 点击汉堡按钮切换菜单
             menuToggle.addEventListener('click', () => {
                 const isOpen = nav.classList.toggle('nav-open');
                 menuToggle.setAttribute('aria-expanded', isOpen);
+                if (navOverlay) {
+                    navOverlay.classList.toggle('active', isOpen);
+                }
             });
             
             // 点击导航链接关闭菜单
@@ -176,16 +181,20 @@
                 link.addEventListener('click', () => {
                     nav.classList.remove('nav-open');
                     menuToggle.setAttribute('aria-expanded', 'false');
+                    if (navOverlay) {
+                        navOverlay.classList.remove('active');
+                    }
                 });
             });
             
-            // 点击页面其他区域关闭菜单
-            document.addEventListener('click', (e) => {
-                if (!nav.contains(e.target) && !menuToggle.contains(e.target)) {
+            // 点击遮罩层关闭菜单
+            if (navOverlay) {
+                navOverlay.addEventListener('click', () => {
                     nav.classList.remove('nav-open');
                     menuToggle.setAttribute('aria-expanded', 'false');
-                }
-            });
+                    navOverlay.classList.remove('active');
+                });
+            }
         }
     </script>
 

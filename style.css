@@ -486,27 +486,156 @@ img {
    Responsive Design - Mobile First
    ============================================ */
 
+/* ============================================
+   Home Page Responsive - Milestone 3
+   ============================================ */
+
 /* Mobile: < 576px */
 @media (max-width: 575px) {
+    /* Hero - 保持全宽 */
+    .hero {
+        margin-top: 60px;
+    }
+    
+    /* 核心价值区块 */
+    .core-value {
+        padding: var(--space-xl) 0;
+    }
+    
+    .core-value h2 {
+        font-size: var(--font-xl);
+        white-space: normal;
+        line-height: 1.4;
+    }
+    
+    .subtitle {
+        font-size: var(--font-xs);
+        margin-bottom: var(--space-lg);
+    }
+    
+    .temple-image {
+        margin-bottom: var(--space-xl);
+    }
+    
+    .temple-image img {
+        border-radius: 6px;
+    }
+    
     .value-grid {
         grid-template-columns: 1fr;
         gap: var(--space-lg);
     }
     
+    .value-item {
+        padding: var(--space-md);
+        background: rgba(255,255,255,0.5);
+        border-radius: 8px;
+    }
+    
+    .value-item .icon {
+        width: 55px;
+        height: 55px;
+        margin-bottom: var(--space-sm);
+    }
+    
+    .value-item .icon img {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .value-item h3 {
+        font-size: var(--font-base);
+        margin-bottom: var(--space-xs);
+    }
+    
+    .value-item p {
+        font-size: var(--font-xs);
+        line-height: 1.7;
+    }
+    
+    /* 核心服务体系 */
+    .services {
+        padding: var(--space-xl) 0;
+    }
+    
+    .services h2 {
+        font-size: var(--font-xl);
+    }
+    
     .services-grid {
         grid-template-columns: 1fr;
+        gap: var(--space-md);
+        margin-top: var(--space-lg);
+    }
+    
+    .service-card {
+        padding: var(--space-md);
+        border-left-width: 3px;
+    }
+    
+    .service-card h3 {
+        font-size: var(--font-md);
+    }
+    
+    .service-card p {
+        font-size: var(--font-xs);
+        line-height: 1.8;
+    }
+    
+    /* 页脚 */
+    .footer {
+        padding: var(--space-lg) 0 var(--space-md);
     }
     
     .footer-grid {
         grid-template-columns: 1fr;
+        gap: var(--space-md);
         text-align: center;
+        margin-bottom: var(--space-lg);
+    }
+    
+    .footer-col h4 {
+        font-size: var(--font-base);
+        margin-bottom: var(--space-sm);
+    }
+    
+    .footer-col p,
+    .footer-col ul li a {
+        font-size: var(--font-xs);
+    }
+    
+    .footer-col ul li {
+        margin-bottom: var(--space-xs);
+    }
+    
+    .footer-bottom {
+        padding-top: var(--space-sm);
+    }
+    
+    .footer-bottom p {
+        font-size: 0.7rem;
     }
 }
 
 /* Tablet: 576px - 767px */
 @media (min-width: 576px) and (max-width: 767px) {
+    .hero {
+        margin-top: 65px;
+    }
+    
     .value-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-md);
+    }
+    
+    .value-item .icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .value-item .icon img {
+        width: 35px;
+        height: 35px;
     }
     
     .services-grid {
@@ -515,6 +644,7 @@ img {
     
     .footer-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-lg);
     }
 }
 
@@ -522,14 +652,22 @@ img {
 @media (min-width: 768px) and (max-width: 991px) {
     .value-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-lg);
     }
     
     .services-grid {
         grid-template-columns: repeat(2, 1fr);
     }
     
+    .service-card:last-child {
+        grid-column: 1 / -1;
+        max-width: 50%;
+        margin: 0 auto;
+    }
+    
     .footer-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-lg);
     }
     
     .nav {
@@ -552,27 +690,45 @@ img {
         display: block;
     }
     
-    /* Mobile nav panel - half screen overlay from top */
+    /* Mobile nav panel - side drawer (70% width) */
     .nav {
         position: fixed;
         top: 0;
         left: 0;
-        right: 0;
-        bottom: 30%;  /* 70% coverage from top */
+        bottom: 0;
+        width: 70%;  /* 只覆盖70%宽度 */
+        max-width: 300px;  /* 最大宽度限制 */
         background: var(--color-bg);
         flex-direction: column;
         justify-content: flex-start;
-        align-items: center;
+        align-items: stretch;
         padding-top: 80px;
         gap: 0;
-        transform: translateY(-100%);
+        transform: translateX(-100%);  /* 从左侧滑入 */
         transition: transform var(--transition-base);
-        z-index: 999;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        z-index: 998;
+        box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+        overflow-y: auto;
     }
     
     .nav.nav-open {
-        transform: translateY(0);
+        transform: translateX(0);
+    }
+    
+    /* 遮罩层 - 点击关闭菜单 */
+    .nav-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 997;
+    }
+    
+    .nav-overlay.active {
+        display: block;
     }
     
     .nav a {
@@ -590,7 +746,6 @@ img {
     .nav a.active {
         background: var(--color-bg-alt);
     }
-}
 
 /* Legacy responsive rules (to be refactored) */
 @media (max-width: 768px) {
