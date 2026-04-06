@@ -1,25 +1,92 @@
+/* ============================================
+   CSS Variables & Design Tokens
+   ============================================ */
+:root {
+    /* Colors */
+    --color-primary: #1a8ccc;
+    --color-primary-dark: #0d6b9e;
+    --color-primary-light: #2a9cdb;
+    --color-secondary: #c9a227;
+    --color-secondary-light: #d4b43a;
+    --color-text: #333;
+    --color-text-light: #666;
+    --color-text-muted: #888;
+    --color-bg: #fff;
+    --color-bg-alt: #f8f9fa;
+    --color-border: #e0e0e0;
+
+    /* Typography - Fluid sizing with clamp() */
+    --font-xs: clamp(0.75rem, 1.5vw, 0.875rem);
+    --font-sm: clamp(0.875rem, 1.8vw, 1rem);
+    --font-base: clamp(1rem, 2vw, 1.125rem);
+    --font-md: clamp(1.125rem, 2.5vw, 1.25rem);
+    --font-lg: clamp(1.25rem, 3vw, 1.5rem);
+    --font-xl: clamp(1.5rem, 4vw, 2rem);
+    --font-2xl: clamp(2rem, 5vw, 2.5rem);
+    --font-3xl: clamp(2.5rem, 6vw, 3.5rem);
+    --font-4xl: clamp(3rem, 8vw, 4.5rem);
+
+    /* Spacing - Fluid sizing */
+    --space-xs: clamp(0.25rem, 1vw, 0.5rem);
+    --space-sm: clamp(0.5rem, 1.5vw, 1rem);
+    --space-md: clamp(1rem, 2vw, 1.5rem);
+    --space-lg: clamp(1.5rem, 3vw, 2.5rem);
+    --space-xl: clamp(2.5rem, 5vw, 4rem);
+    --space-2xl: clamp(4rem, 8vw, 6rem);
+
+    /* Container */
+    --container-max: min(1200px, 90%);
+    --container-padding: var(--space-md);
+
+    /* Breakpoints (for reference in JS) */
+    --bp-sm: 576px;
+    --bp-md: 768px;
+    --bp-lg: 992px;
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+/* Global Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
-    line-height: 1.6;
-    color: #333;
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
 }
 
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+    font-size: var(--font-base);
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+}
+
+/* Fluid Images - Never overflow */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Fluid Container */
 .container {
-    max-width: 1200px;
+    width: var(--container-max);
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 var(--container-padding);
 }
 
 /* 导航栏 */
 .header {
-    background: #fff;
-    padding: 20px 0;
+    background: var(--color-bg);
+    padding: var(--space-md) 0;
     box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     position: fixed;
     width: 100%;
@@ -34,38 +101,38 @@ body {
 }
 
 .logo {
-    font-size: 18px;
+    font-size: var(--font-md);
     font-weight: 500;
-    color: #1a8ccc;
+    color: var(--color-primary);
     letter-spacing: 0.5px;
 }
 
 .nav {
     display: flex;
-    gap: 45px;
+    gap: clamp(25px, 4vw, 45px);
 }
 
 .nav a {
     text-decoration: none;
-    color: #666;
-    font-size: 15px;
-    transition: color 0.3s;
+    color: var(--color-text-light);
+    font-size: var(--font-sm);
+    transition: color var(--transition-base);
     position: relative;
 }
 
 .nav a.active {
-    color: #1a8ccc;
+    color: var(--color-primary);
 }
 
 .nav a:hover {
-    color: #1a8ccc;
+    color: var(--color-primary);
 }
 
 /* Hero区域 */
 .hero {
     position: relative;
     width: 100%;
-    margin-top: 70px;
+    margin-top: clamp(60px, 10vw, 70px);
 }
 
 .hero-bg {
@@ -76,36 +143,36 @@ body {
 
 /* 核心价值 */
 .core-value {
-    padding: 80px 0 100px;
-    background: #f8f9fa;
+    padding: var(--space-2xl) 0;
+    background: var(--color-bg-alt);
 }
 
 .core-value h2 {
     text-align: center;
-    font-size: 36px;
+    font-size: var(--font-2xl);
     font-weight: 500;
-    margin-bottom: 20px;
+    margin-bottom: var(--space-sm);
     color: #1a1a1a;
     letter-spacing: 2px;
 }
 
 .subtitle {
     text-align: center;
-    color: #666;
-    font-size: 15px;
-    margin-bottom: 60px;
+    color: var(--color-text-light);
+    font-size: var(--font-sm);
+    margin-bottom: var(--space-xl);
     letter-spacing: 0.5px;
     line-height: 1.8;
 }
 
 .temple-image {
     text-align: center;
-    margin-bottom: 80px;
+    margin-bottom: var(--space-2xl);
 }
 
 .temple-image img {
-    max-width: 1200px;
     width: 100%;
+    max-width: 1200px;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
@@ -114,7 +181,7 @@ body {
 .value-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 50px;
+    gap: clamp(20px, 4vw, 50px);
     max-width: 1100px;
     margin: 0 auto;
 }
@@ -124,9 +191,9 @@ body {
 }
 
 .value-item .icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 25px;
+    width: clamp(60px, 10vw, 80px);
+    height: clamp(60px, 10vw, 80px);
+    margin: 0 auto var(--space-md);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -135,37 +202,37 @@ body {
 }
 
 .value-item .icon img {
-    width: 45px;
-    height: 45px;
+    width: clamp(35px, 6vw, 45px);
+    height: clamp(35px, 6vw, 45px);
     object-fit: contain;
 }
 
 .value-item h3 {
-    font-size: 18px;
+    font-size: var(--font-md);
     font-weight: 500;
-    margin-bottom: 15px;
+    margin-bottom: var(--space-sm);
     color: #1a1a1a;
     letter-spacing: 1px;
 }
 
 .value-item p {
-    font-size: 14px;
-    color: #666;
+    font-size: var(--font-sm);
+    color: var(--color-text-light);
     line-height: 1.8;
     letter-spacing: 0.3px;
 }
 
 /* 核心服务体系 */
 .services {
-    padding: 80px 0 100px;
-    background: #fff;
+    padding: var(--space-2xl) 0;
+    background: var(--color-bg);
 }
 
 .services h2 {
     text-align: center;
-    font-size: 36px;
+    font-size: var(--font-2xl);
     font-weight: 500;
-    margin-bottom: 20px;
+    margin-bottom: var(--space-sm);
     color: #1a1a1a;
     letter-spacing: 2px;
 }
@@ -173,15 +240,15 @@ body {
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    margin-top: 60px;
+    gap: clamp(20px, 3vw, 40px);
+    margin-top: var(--space-xl);
 }
 
 .service-card {
-    border-left: 4px solid #1a8ccc;
-    padding: 35px 30px;
-    background: #fff;
-    transition: all 0.3s;
+    border-left: 4px solid var(--color-primary);
+    padding: clamp(25px, 3vw, 35px) clamp(20px, 2.5vw, 30px);
+    background: var(--color-bg);
+    transition: all var(--transition-base);
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
@@ -191,25 +258,25 @@ body {
 }
 
 .service-card h3 {
-    font-size: 20px;
+    font-size: var(--font-lg);
     font-weight: 500;
-    margin-bottom: 18px;
+    margin-bottom: var(--space-sm);
     color: #1a1a1a;
     letter-spacing: 1px;
 }
 
 .service-card p {
-    font-size: 14px;
-    color: #666;
+    font-size: var(--font-sm);
+    color: var(--color-text-light);
     line-height: 1.9;
-    margin-bottom: 25px;
+    margin-bottom: var(--space-md);
     letter-spacing: 0.3px;
 }
 
 .learn-more {
-    color: #1a8ccc;
+    color: var(--color-primary);
     text-decoration: none;
-    font-size: 14px;
+    font-size: var(--font-sm);
     font-weight: 500;
     display: inline-flex;
     align-items: center;
@@ -217,33 +284,33 @@ body {
 }
 
 .learn-more:hover {
-    color: #1577b3;
+    color: var(--color-primary-dark);
 }
 
 /* 页脚 */
 .footer {
     background: #1a2332;
     color: #fff;
-    padding: 60px 0 30px;
+    padding: var(--space-xl) 0 var(--space-md);
 }
 
 .footer-grid {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 60px;
-    margin-bottom: 50px;
+    gap: clamp(30px, 5vw, 60px);
+    margin-bottom: var(--space-xl);
 }
 
 .footer-col h4 {
-    font-size: 17px;
+    font-size: var(--font-md);
     font-weight: 500;
-    margin-bottom: 20px;
+    margin-bottom: var(--space-md);
     color: #fff;
     letter-spacing: 0.5px;
 }
 
 .footer-col p {
-    font-size: 14px;
+    font-size: var(--font-sm);
     color: #8a9199;
     line-height: 1.8;
     letter-spacing: 0.3px;
@@ -254,14 +321,14 @@ body {
 }
 
 .footer-col ul li {
-    margin-bottom: 12px;
+    margin-bottom: var(--space-sm);
 }
 
 .footer-col ul li a {
     color: #8a9199;
     text-decoration: none;
-    font-size: 14px;
-    transition: color 0.3s;
+    font-size: var(--font-sm);
+    transition: color var(--transition-base);
     letter-spacing: 0.3px;
 }
 
@@ -271,13 +338,13 @@ body {
 
 .footer-bottom {
     text-align: center;
-    padding-top: 30px;
+    padding-top: var(--space-md);
     border-top: 1px solid #2a3442;
 }
 
 .footer-bottom p {
     color: #6a7179;
-    font-size: 13px;
+    font-size: var(--font-xs);
     letter-spacing: 0.3px;
 }
 
@@ -306,7 +373,7 @@ body {
 .animate-on-scroll {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition: opacity var(--transition-slow), transform var(--transition-slow);
 }
 
 /* 当元素进入视口时显示 */
@@ -317,11 +384,11 @@ body {
 
 /* 导航栏和Hero始终显示 */
 .header {
-    animation: fadeIn 0.5s ease-out;
+    animation: fadeIn var(--transition-base) ease-out;
 }
 
 .hero {
-    animation: fadeIn 0.8s ease-out;
+    animation: fadeIn var(--transition-slow) ease-out;
 }
 
 /* 为不同元素添加延迟 */
@@ -353,14 +420,74 @@ body {
     transition-delay: 0.2s;
 }
 
-/* 响应式设计 */
+/* ============================================
+   Responsive Design - Mobile First
+   ============================================ */
+
+/* Mobile: < 576px */
+@media (max-width: 575px) {
+    .value-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
+
+/* Tablet: 576px - 767px */
+@media (min-width: 576px) and (max-width: 767px) {
+    .value-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Tablet/Desktop: 768px - 991px */
+@media (min-width: 768px) and (max-width: 991px) {
+    .value-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .nav {
+        display: none;
+    }
+}
+
+/* Desktop: >= 992px */
+@media (min-width: 992px) {
+    /* Default styles apply */
+}
+
+/* Legacy responsive rules (to be refactored) */
 @media (max-width: 768px) {
     .hero-content h1 {
-        font-size: 32px;
+        font-size: var(--font-2xl);
     }
     
     .hero-content p {
-        font-size: 15px;
+        font-size: var(--font-sm);
     }
     
     .nav {
@@ -373,7 +500,7 @@ body {
     }
     
     .btn {
-        width: 200px;
+        width: min(200px, 80%);
     }
 }
 
