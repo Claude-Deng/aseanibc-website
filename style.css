@@ -1045,8 +1045,188 @@ img {
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
-/* 响应式 */
-@media (max-width: 968px) {
+/* ============================================
+   Services Page Responsive - Milestone 5
+   ============================================ */
+
+/* Mobile: < 576px */
+@media (max-width: 575px) {
+    .services-page {
+        padding: 80px 0 40px;
+    }
+    
+    .services-intro {
+        padding: 20px 0 40px;
+        text-align: center;
+    }
+    
+    .services-intro h1 {
+        font-size: var(--font-xl);
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+    }
+    
+    .intro-text {
+        font-size: var(--font-sm);
+        margin-bottom: 25px;
+        line-height: 1.7;
+    }
+    
+    .services-page .btn-primary {
+        padding: 12px 35px;
+        font-size: var(--font-sm);
+    }
+    
+    .service-detail {
+        margin-top: 40px;
+        padding-top: 30px;
+    }
+    
+    .service-detail h2 {
+        font-size: var(--font-lg);
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+        line-height: 1.4;
+    }
+    
+    .service-highlight {
+        padding: 15px 20px;
+        margin-bottom: 25px;
+    }
+    
+    .service-highlight p {
+        font-size: var(--font-sm);
+        line-height: 1.8;
+    }
+    
+    .service-content-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .service-image {
+        order: -1;
+    }
+    
+    .service-image img {
+        max-width: 100%;
+        border-radius: 6px;
+    }
+    
+    .service-list ul {
+        margin-bottom: 20px;
+    }
+    
+    .service-list li {
+        font-size: var(--font-sm);
+        line-height: 1.8;
+        margin-bottom: 12px;
+        padding-left: 0;
+    }
+    
+    .service-list li strong {
+        display: block;
+        margin-bottom: 4px;
+        font-size: var(--font-base);
+    }
+    
+    .service-note {
+        padding: 15px;
+        margin-bottom: 25px;
+    }
+    
+    .service-note p {
+        font-size: var(--font-xs);
+        line-height: 1.7;
+    }
+    
+    /* 服务优势 */
+    .service-advantages {
+        padding: 50px 0;
+        margin-top: 40px;
+    }
+    
+    .service-advantages h2 {
+        font-size: var(--font-xl);
+        letter-spacing: 1px;
+    }
+    
+    .service-advantages .subtitle {
+        font-size: var(--font-sm);
+        margin-bottom: 30px;
+    }
+    
+    .advantages-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        margin-top: 30px;
+    }
+    
+    .advantage-item {
+        padding: 15px;
+    }
+    
+    .advantage-icon {
+        width: 65px;
+        height: 65px;
+        margin-bottom: 18px;
+    }
+    
+    .advantage-icon img {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .advantage-item h3 {
+        font-size: var(--font-base);
+        margin-bottom: 10px;
+    }
+    
+    .advantage-item p {
+        font-size: var(--font-xs);
+        line-height: 1.7;
+    }
+}
+
+/* Tablet: 576px - 767px */
+@media (min-width: 576px) and (max-width: 767px) {
+    .services-page {
+        padding: 90px 0 50px;
+    }
+    
+    .services-intro h1 {
+        font-size: 32px;
+    }
+    
+    .service-detail h2 {
+        font-size: 26px;
+    }
+    
+    .service-content-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+    
+    .service-image {
+        order: -1;
+    }
+    
+    .advantages-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+}
+
+/* Tablet/Desktop: 768px - 991px */
+@media (min-width: 768px) and (max-width: 991px) {
+    .services-page {
+        padding: 100px 0 60px;
+    }
+    
+    .services-intro h1 {
+        font-size: 36px;
+    }
+    
     .service-content-grid {
         grid-template-columns: 1fr;
         gap: 40px;
@@ -1054,7 +1234,36 @@ img {
     
     .service-image {
         order: -1;
+        text-align: center;
     }
+    
+    .service-image img {
+        max-width: 80%;
+    }
+    
+    .advantages-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+    
+    .advantage-icon {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .advantage-icon img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .advantage-item h3 {
+        font-size: 16px;
+    }
+}
+
+/* Desktop: >= 992px */
+@media (min-width: 992px) {
+    /* Default styles apply */
 }
 
 /* 服务优势部分 */
@@ -1116,13 +1325,6 @@ img {
     color: #666;
     line-height: 1.8;
     letter-spacing: 0.3px;
-}
-
-@media (max-width: 968px) {
-    .advantages-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
 }
 
 /* 项目经验页面 */
