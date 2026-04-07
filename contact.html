@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>聯繫我們 - 埃森国际商务咨询有限公司</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
     <!-- 导航栏 -->
@@ -22,6 +22,7 @@
                 <a href="cases.html">項目經驗</a>
                 <a href="team.html">團隊介紹</a>
                 <a href="contact.html" class="active">聯繫我們</a>
+                <a href="news-sources.html">信息來源</a>
             </nav>
             <div class="nav-overlay"></div>
         </div>
@@ -59,6 +60,47 @@
                 </div>
             </section>
 
+            <!-- 合作伙伴 -->
+            <section class="partners-section animate-on-scroll">
+                <h2>合作夥伴</h2>
+                
+                <div class="partners-wall" id="partnersWall">
+                    <span class="partner-tag">人民日報</span>
+                    <span class="partner-tag">央視頻</span>
+                    <span class="partner-tag">新華社</span>
+                    <span class="partner-tag">CNN</span>
+                    <span class="partner-tag">丹麥哥本哈根郵報</span>
+                    <span class="partner-tag">Youtube</span>
+                    <span class="partner-tag">TikTok</span>
+                    <span class="partner-tag">咪咕體育</span>
+                    <span class="partner-tag">龍域網</span>
+                    <span class="partner-tag">北歐時報</span>
+                    <span class="partner-tag">河南衛視</span>
+                    <span class="partner-tag">絲路集團</span>
+                    <span class="partner-tag">山海圖</span>
+                    <span class="partner-tag">丹麥華商總會</span>
+                    <span class="partner-tag">哥本哈根龍舟節組委會</span>
+                    <span class="partner-tag">北歐未來浪潮創作者聯盟</span>
+                    <span class="partner-tag">華陽集團</span>
+                    <span class="partner-tag">千鈞體育</span>
+                    <span class="partner-tag">武林風賽事組委會</span>
+                    <span class="partner-tag">中醫藥發展基金</span>
+                    <span class="partner-tag">中國生物醫藥園區</span>
+                    <span class="partner-tag">丹麥中華工商聯合協會</span>
+                    <span class="partner-tag">丹麥中國文化交流協會</span>
+                    <span class="partner-tag">丹麥傳統文化協會</span>
+                    <span class="partner-tag">丹麥旗袍協會</span>
+                    <span class="partner-tag">丹中茶文化協會</span>
+                    <span class="partner-tag">丹麥華人藝術總會</span>
+                    <span class="partner-tag">丹麥旅遊文化交流協會</span>
+                    <span class="partner-tag">北歐養生旅遊協會</span>
+                    <span class="partner-tag">丹中餐飲業總會</span>
+                    <span class="partner-tag">丹中運動文化協會</span>
+                    <span class="partner-tag">中醫藥文化大會委員會</span>
+                    <span class="partner-tag">中國民族醫藥學會溫泉醫養分會</span>
+                </div>
+            </section>
+
         </div>
     </main>
 
@@ -92,7 +134,7 @@
                     <ul>
                         <li><a href="contact.html">聯繫方式</a></li>
                         <li><a href="contact.html">在線咨詢</a></li>
-                        <li><a href="contact.html">信息来源</a></li>
+                        <li><a href="news-sources.html">信息来源</a></li>
                     </ul>
                 </div>
             </div>
@@ -157,6 +199,55 @@
                 });
             }
         }
+        
+        // 合作伙伴按行着色
+        function colorizePartnerRows() {
+            const wall = document.getElementById('partnersWall');
+            if (!wall) return;
+            
+            const tags = wall.querySelectorAll('.partner-tag');
+            if (tags.length === 0) return;
+            
+            // 清除旧的颜色类
+            tags.forEach(tag => {
+                tag.className = 'partner-tag';
+            });
+            
+            // 计算每一行有哪些标签
+            const rows = [];
+            let currentRow = [];
+            let currentRowTop = tags[0].offsetTop;
+            
+            tags.forEach(tag => {
+                if (tag.offsetTop === currentRowTop) {
+                    currentRow.push(tag);
+                } else {
+                    rows.push(currentRow);
+                    currentRow = [tag];
+                    currentRowTop = tag.offsetTop;
+                }
+            });
+            if (currentRow.length > 0) {
+                rows.push(currentRow);
+            }
+            
+            // 给每一行分配颜色 (赤橙黄绿青蓝紫)
+            rows.forEach((row, index) => {
+                const colorClass = 'row-color-' + (index % 7);
+                row.forEach(tag => {
+                    tag.classList.add(colorClass);
+                });
+            });
+        }
+        
+        // 页面加载时执行
+        window.addEventListener('load', colorizePartnerRows);
+        // 窗口大小变化时重新计算
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(colorizePartnerRows, 100);
+        });
     </script>
 
 </body>
