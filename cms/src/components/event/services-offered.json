@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_event_services_offered",
+  "info": {
+    "displayName": "Event Service Offered",
+    "description": "活动提供的服务项",
+    "icon": "handshake"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "text"
+    }
+  }
+}

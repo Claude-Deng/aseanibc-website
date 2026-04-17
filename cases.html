@@ -22,6 +22,7 @@
                 <a href="cases.html" class="active">項目經驗</a>
                 <a href="team.html">團隊介紹</a>
                 <a href="contact.html">聯繫我們</a>
+                <a href="news-sources.html">信息來源</a>
             </nav>
             <div class="nav-overlay"></div>
         </div>
@@ -32,175 +33,32 @@
         <div class="container">
             <!-- 项目类型部分 -->
             <section class="cases-intro animate-on-scroll">
-                <h1>我們的項目類型</h1>
-                <p class="intro-text">覆蓋東南亞出海全場景，從單一落地到全域佈局，均有成熟實踐經驗</p>
+                <h1 id="introTitle">我們的項目類型</h1>
+                <p class="intro-text" id="introText">覆蓋東南亞出海全場景，從單一落地到全域佈局，均有成熟實踐經驗</p>
             </section>
 
-            <!-- 项目类型网格 -->
+            <!-- 项目类型网格 - JS 动态渲染 -->
             <section class="cases-grid-section">
-                <div class="cases-grid">
-                    <div class="case-type-card animate-on-scroll">
-                        <div class="case-icon">
-                            <img src="casePic/icom_k@2x.png" alt="企業市場進入與落地">
-                        </div>
-                        <h3>企業市場進入與落地</h3>
-                        <p class="case-slogan">以清晰判斷為起點，協助企業穩健完成市場落地</p>
-                        <a href="case-market-entry.html" class="case-btn">查看案例 →</a>
-                    </div>
-
-                    <div class="case-type-card animate-on-scroll">
-                        <div class="case-icon">
-                            <img src="casePic/icom_z@2x.png" alt="跨境投資與工廠設立">
-                        </div>
-                        <h3>跨境投資與工廠設立</h3>
-                        <p class="case-slogan">從選址到投產，全流程推進可控的產能出海布局</p>
-                        <a href="case-investment.html" class="case-btn">查看案例 →</a>
-                    </div>
-
-                    <div class="case-type-card animate-on-scroll">
-                        <div class="case-icon">
-                            <img src="casePic/icom_x@2x.png" alt="區域運營與業務擴展">
-                        </div>
-                        <h3>區域運營與業務擴展</h3>
-                        <p class="case-slogan">由單點落地升級為可持續的區域運營體系</p>
-                        <a href="case-regional-operation.html" class="case-btn">查看案例 →</a>
-                    </div>
-
-                    <div class="case-type-card animate-on-scroll">
-                        <div class="case-icon">
-                            <img src="casePic/icom_c@2x.png" alt="合規與結構調整">
-                        </div>
-                        <h3>合規與結構調整</h3>
-                        <p class="case-slogan">以合規為基礎，重構支撐企業長期發展的結構</p>
-                        <a href="case-compliance.html" class="case-btn">查看案例 →</a>
-                    </div>
-
-                    <div class="case-type-card animate-on-scroll">
-                        <div class="case-icon">
-                            <img src="casePic/icom_v@2x.png" alt="品牌與知識產權出海">
-                        </div>
-                        <h3>品牌與知識產權出海</h3>
-                        <p class="case-slogan">為品牌建立可延展、可防護的跨境保護體系</p>
-                        <a href="case-brand-ip.html" class="case-btn">查看案例 →</a>
-                    </div>
-
-                    <div class="case-type-card animate-on-scroll">
-                        <div class="case-icon">
-                            <img src="casePic/icom_b@2x.png" alt="跨境資金與資產優化">
-                        </div>
-                        <h3>跨境資金與資產優化</h3>
-                        <p class="case-slogan">設計清晰合規的資金路徑，降低跨境資產風險</p>
-                        <a href="case-asset-optimization.html" class="case-btn">查看案例 →</a>
-                    </div>
-                </div>
+                <div class="cases-grid" id="cases-grid"></div>
             </section>
 
-            <!-- 行业经验部分 -->
-            <section class="industry-section animate-on-scroll">
-                <h2>深耕多行業，定製化解決方案</h2>
-                <p class="subtitle">不同行業的出海痛點與路徑差異顯著，我們結合行業特性與當地市場為您服務</p>
-
-                <div class="industry-grid">
-                    <div class="industry-item">
-                        <div class="industry-icon">
-                            <img src="casePic/icom_qw@2x.png" alt="跨境貿易">
-                        </div>
-                        <h3>跨境貿易</h3>
-                        <p>供應商</p>
-                    </div>
-
-                    <div class="industry-item">
-                        <div class="industry-icon">
-                            <img src="casePic/icom_qe@2x.png" alt="製造業">
-                        </div>
-                        <h3>製造業</h3>
-                        <p>海外建廠</p>
-                    </div>
-
-                    <div class="industry-item">
-                        <div class="industry-icon">
-                            <img src="casePic/icom_qr@2x.png" alt="服務業">
-                        </div>
-                        <h3>服務業</h3>
-                        <p>跨境拓展</p>
-                    </div>
-
-                    <div class="industry-item">
-                        <div class="industry-icon">
-                            <img src="casePic/icom_qt@2x.png" alt="消費品牌">
-                        </div>
-                        <h3>消費品牌</h3>
-                        <p>本地化運營</p>
-                    </div>
-
-                    <div class="industry-item">
-                        <div class="industry-icon">
-                            <img src="casePic/icom_qy@2x.png" alt="數字化業務">
-                        </div>
-                        <h3>數字化業務</h3>
-                        <p>跨境落地</p>
-                    </div>
-                </div>
-
-                <div class="industry-note">
+            <!-- 行业经验部分 - JS 动态渲染 -->
+            <section class="industry-section animate-on-scroll" id="industry-section" style="display:none;">
+                <h2 id="industryTitle">深耕多行業，定製化解決方案</h2>
+                <p class="subtitle" id="industrySubtitle">不同行業的出海痛點與路徑差異顯著，我們結合行業特性與當地市場為您服務</p>
+                <div class="industry-grid" id="industry-grid"></div>
+                <div class="industry-note" id="industryNote">
                     <p>不同行業在產業鏈運作模式、政策約束條件與供應鏈組織方式上，均存在明顯的在地差異。我們不採取標準化或「一體適用」的服務方式，而是依據企業所屬行業特性，配置具備相應行業深度經驗的顧問團隊，結合目標國家的產業政策方向與市場實際情況，為企業設計具差異化的出海與落地路徑，確保整體方案在合規性與可執行性上的平衡。</p>
                     <p class="industry-example"><strong>例如：</strong>製造型企業在出海過程中，核心關注產業園區選擇、供應鏈配套成熟度及當地用工與勞動政策；消費品牌企業更關注品牌佈局、銷售渠道資源與本地化行銷推廣能力；跨境貿易企業則主要關注報關與物流效率、稅務籌劃安排以及跨境資金結算結構。我們針對上述不同場景，提供對應的顧問支持，協助企業實現穩健且可持續的海外發展。</p>
                 </div>
             </section>
 
-            <!-- 客户怎么说部分 -->
-            <section class="testimonials-section animate-on-scroll">
+            <!-- 客户怎么说部分 - JS 动态渲染 -->
+            <section class="testimonials-section animate-on-scroll" id="testimonials-section" style="display:none;">
                 <h2>客戶怎麼說</h2>
                 <p class="subtitle">真實客戶反饋，見證我們的專業與價值</p>
-
-                <div class="testimonials-list">
-                    <div class="testimonial-message animate-on-scroll">
-                        <div class="message-header">
-                            <div class="message-avatar">
-                                <img src="casePic/icom_qa@2x.png" alt="張總">
-                            </div>
-                            <div class="message-info">
-                                <h3>張總</h3>
-                                <p>某跨境企業 創始人</p>
-                            </div>
-                        </div>
-                        <div class="message-content">
-                            <p>「最初我們自己嘗試落地泰國，走了很多彎路，對接了多個本地機構都不順利。後來找到埃森，他們團隊真的很專業，不僅幫我們找到理想的工公司地址，還協調稅務優化了稅務結構，節省了不少成本，專業又省心。」</p>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-message animate-on-scroll">
-                        <div class="message-header">
-                            <div class="message-avatar">
-                                <img src="casePic/icom_qo@2x.png" alt="李總">
-                            </div>
-                            <div class="message-info">
-                                <h3>李總</h3>
-                                <p>某家居系統企業 總經理</p>
-                            </div>
-                        </div>
-                        <div class="message-content">
-                            <p>「作為傳統製造型企業，我們剛開始對海外落地很陌生物流及稅，幫我們避開了很多坑內流程了多個協議的設施，選址我們對接了本地優質的物流和物流資源，設計了合規的的稅務金融框，解決了我們的後顧之憂。」</p>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-message animate-on-scroll">
-                        <div class="message-header">
-                            <div class="message-avatar">
-                                <img src="casePic/icom_qp@2x.png" alt="王總">
-                            </div>
-                            <div class="message-info">
-                                <h3>王總</h3>
-                                <p>某消費品牌 創始人</p>
-                            </div>
-                        </div>
-                        <div class="message-content">
-                            <p>「我們要創業品牌，剛進出海泰南亞，一開始很迷茫。不知道怎麼先進入哪個國家、向哪個渠道進攻行做了詳細的計畫分析，建議我們先從泰國落地，千億單我們對接了渠道對點，還幫忙了從前的渠道關係支援，甚至幫助出海的上的營運對接。」</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="testimonials-list" id="testimonials-list"></div>
             </section>
-
         </div>
     </main>
 
@@ -245,61 +103,190 @@
     </footer>
 
     <script>
-        // 滚动动画
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+        const CMS_API_BASE = 'http://127.0.0.1:1337';
+        const TOKEN = '4566e39fb70c3a1e3819ce9f27584fc2b7fae06f1e2f0c26f7bded2aff339f90978b2ea628f485f0d8baa3d7848398170329f13a47474a99b1f7ec4cd7900da458fa782f2162693885b65115b3c52f977c5620040c79326b3c12fe02bc2edfcb2821fbb0a460bbfa0d8dfe83d358ddbe3f3c9b226a3afdd5a7ffd1b8880e2989';
+
+        async function api(path) {
+            const res = await fetch(CMS_API_BASE + path, {
+                headers: { Authorization: 'Bearer ' + TOKEN }
+            });
+            if (!res.ok) throw new Error('API ' + res.status);
+            return res.json();
+        }
+
+        // 项目类型 slug → 动态详情页（?type=slug）
+        const CASE_TYPE_MAP = {
+            'market-entry':         'case-detail.html?type=market-entry',
+            'investment':           'case-detail.html?type=investment',
+            'regional-operation':   'case-detail.html?type=regional-operation',
+            'compliance':           'case-detail.html?type=compliance',
+            'brand-ip':             'case-detail.html?type=brand-ip',
+            'asset-optimization':   'case-detail.html?type=asset-optimization',
         };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
+        // 渲染项目类型网格（6类案例，每类取第一条）
+        async function renderCaseTypes() {
+            try {
+                const data = await api('/api/cases?populate=*');
+                const cases = Array.isArray(data) ? data : (data.data || []);
+
+                // 按 category 字段分组，每组取第一条（CMS schema 字段名为 category）
+                const seen = new Set();
+                const firstOfType = [];
+                for (const c of cases) {
+                    const cat = c.category;
+                    if (!seen.has(cat) && CASE_TYPE_MAP[cat]) {
+                        seen.add(cat);
+                        firstOfType.push(c);
+                    }
                 }
-            });
-        }, observerOptions);
 
-        // 观察所有需要动画的元素
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
+                const grid = document.getElementById('cases-grid');
+                firstOfType.forEach(c => {
+                    const href = CASE_TYPE_MAP[c.category] || 'cases.html';
+                    const iconUrl = (c.categoryIcon && c.categoryIcon.formats && c.categoryIcon.formats.medium && c.categoryIcon.formats.medium.url) || (c.categoryIcon && c.categoryIcon.url) || '';
+                    const fullIcon = iconUrl ? (iconUrl.startsWith('http') ? iconUrl : CMS_API_BASE + iconUrl) : '';
 
-        // 汉堡菜单功能
+                    const card = document.createElement('div');
+                    card.className = 'case-type-card animate-on-scroll';
+                    card.innerHTML = `
+                        <div class="case-icon">
+                            ${fullIcon ? `<img src="${fullIcon}" alt="${c.title}">` : ''}
+                        </div>
+                        <h3>${c.title || ''}</h3>
+                        <p class="case-slogan">${c.slogan || ''}</p>
+                        <a href="${href}" class="case-btn">查看案例 →</a>
+                    `;
+                    grid.appendChild(card);
+                });
+            } catch (e) {
+                console.error('cases grid error:', e);
+            }
+        }
+
+        // 渲染行业经验（从 CasesPage.industries 读取）
+        async function renderIndustries() {
+            try {
+                const cp = await api('/api/cases-page?populate=*');
+                const industries = cp.industries || [];
+                if (!industries.length) return;
+
+                // ── 动态更新静态区域（A1-A4）─────────────────────────────
+                // 顶部 intro 区
+                const introTitleEl = document.getElementById('introTitle');
+                const introTextEl  = document.getElementById('introText');
+                if (introTitleEl && cp.introTitle) introTitleEl.textContent = cp.introTitle;
+                if (introTextEl  && cp.introText)  introTextEl.textContent  = cp.introText;
+
+                // 行业经验标题区
+                const industryTitleEl = document.getElementById('industryTitle');
+                const industrySubtitleEl = document.getElementById('industrySubtitle');
+                if (industryTitleEl    && cp.industryTitle)    industryTitleEl.textContent    = cp.industryTitle;
+                if (industrySubtitleEl && cp.industrySubtitle) industrySubtitleEl.textContent = cp.industrySubtitle;
+
+                // 行业说明段落（A5）
+                if (cp.industryExample) {
+                    const noteEl = document.getElementById('industryNote');
+                    if (noteEl) {
+                        // CMS industryExample 包含完整两段文字（含 <strong>例如：</strong>），直接 innerHTML
+                        noteEl.innerHTML = cp.industryExample;
+                    }
+                }
+
+                document.getElementById('industry-section').style.display = '';
+                const grid = document.getElementById('industry-grid');
+                industries.forEach(ind => {
+                    const iconUrl = (ind.icon && ind.icon.formats && ind.icon.formats.medium && ind.icon.formats.medium.url) || (ind.icon && ind.icon.url) || '';
+                    const fullIcon = iconUrl ? (iconUrl.startsWith('http') ? iconUrl : CMS_API_BASE + iconUrl) : '';
+
+                    const item = document.createElement('div');
+                    item.className = 'industry-item';
+                    item.innerHTML = `
+                        <div class="industry-icon">
+                            ${fullIcon ? `<img src="${fullIcon}" alt="${ind.industry || ''}">` : ''}
+                        </div>
+                        <h3>${ind.industry || ''}</h3>
+                        <p>${ind.description || ''}</p>
+                    `;
+                    grid.appendChild(item);
+                });
+            } catch (e) {
+                console.error('industries error:', e);
+            }
+        }
+
+        // 渲染客户评价（取前3条）
+        async function renderTestimonials() {
+            try {
+                const data = await api('/api/testimonials?populate=*');
+                const testis = (Array.isArray(data) ? data : (data.data || [])).slice(0, 3);
+                if (!testis.length) return;
+
+                document.getElementById('testimonials-section').style.display = '';
+                const list = document.getElementById('testimonials-list');
+                testis.forEach(t => {
+                    const avatarUrl = (t.reviewerAvatar && t.reviewerAvatar.formats && t.reviewerAvatar.formats.medium && t.reviewerAvatar.formats.medium.url) || (t.reviewerAvatar && t.reviewerAvatar.url) || '';
+                    const fullAvatar = avatarUrl ? (avatarUrl.startsWith('http') ? avatarUrl : CMS_API_BASE + avatarUrl) : '';
+
+                    const item = document.createElement('div');
+                    item.className = 'testimonial-message animate-on-scroll';
+                    item.innerHTML = `
+                        <div class="message-header">
+                            <div class="message-avatar">
+                                ${fullAvatar ? `<img src="${fullAvatar}" alt="${t.reviewerName}">` : ''}
+                            </div>
+                            <div class="message-info">
+                                <h3>${t.reviewerName || ''}</h3>
+                                <p>${t.reviewerTitle || ''}</p>
+                            </div>
+                        </div>
+                        <div class="message-content">
+                            <p>「${t.reviewContent || ''}」</p>
+                        </div>
+                    `;
+                    list.appendChild(item);
+                });
+            } catch (e) {
+                console.error('testimonials error:', e);
+            }
+        }
+
+        // 初始化
+        (async () => {
+            await Promise.all([renderCaseTypes(), renderIndustries(), renderTestimonials()]);
+
+            // 触发滚动动画
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('animated');
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+        })();
+
+        // 汉堡菜单
         const menuToggle = document.querySelector('.menu-toggle');
         const nav = document.querySelector('.nav');
         const navOverlay = document.querySelector('.nav-overlay');
-        
         if (menuToggle && nav) {
-            // 点击汉堡按钮切换菜单
             menuToggle.addEventListener('click', () => {
                 const isOpen = nav.classList.toggle('nav-open');
                 menuToggle.setAttribute('aria-expanded', isOpen);
-                if (navOverlay) {
-                    navOverlay.classList.toggle('active', isOpen);
-                }
+                navOverlay && navOverlay.classList.toggle('active', isOpen);
             });
-            
-            // 点击导航链接关闭菜单
             nav.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     nav.classList.remove('nav-open');
                     menuToggle.setAttribute('aria-expanded', 'false');
-                    if (navOverlay) {
-                        navOverlay.classList.remove('active');
-                    }
+                    navOverlay && navOverlay.classList.remove('active');
                 });
             });
-            
-            // 点击遮罩层关闭菜单
-            if (navOverlay) {
-                navOverlay.addEventListener('click', () => {
-                    nav.classList.remove('nav-open');
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    navOverlay.classList.remove('active');
-                });
-            }
+            navOverlay && navOverlay.addEventListener('click', () => {
+                nav.classList.remove('nav-open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                navOverlay.classList.remove('active');
+            });
         }
     </script>
-
 </body>
 </html>

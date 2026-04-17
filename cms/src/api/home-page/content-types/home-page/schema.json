@@ -1,0 +1,51 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_pages",
+  "info": {
+    "displayName": "HomePage",
+    "description": "首页内容",
+    "singularName": "home-page",
+    "pluralName": "home-pages"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "bannerImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "slogan": {
+      "type": "string",
+      "required": true
+    },
+    "sloganSubtitle": {
+      "type": "string"
+    },
+    "coreValuesImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "coreValues": {
+      "type": "component",
+      "repeatable": true,
+      "component": "home.core-values",
+      "required": true
+    },
+    "servicesTitle": {
+      "type": "string"
+    },
+    "servicesSubtitle": {
+      "type": "text"
+    },
+    "metaTitle": {
+      "type": "string"
+    },
+    "metaDescription": {
+      "type": "text"
+    }
+  }
+}

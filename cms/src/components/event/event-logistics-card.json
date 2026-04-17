@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_event_event_logistics_card",
+  "info": {
+    "displayName": "Event Logistics Card",
+    "description": "行程/住宿/保障类内容卡片",
+    "icon": "list"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

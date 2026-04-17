@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例详情 - 埃森國際商務諮詢有限公司</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">埃森國際商務諮詢有限公司</div>
+            <button class="menu-toggle" aria-label="打开菜单" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+            <nav class="nav">
+                <a href="index.html">首页</a>
+                <a href="about.html">關於我們</a>
+                <a href="services.html">服務內容</a>
+                <a href="events.html">出海活動</a>
+                <a href="cases.html">項目經驗</a>
+                <a href="team.html">團隊介紹</a>
+                <a href="contact.html">聯繫我們</a>
+            </nav>
+            <div class="nav-overlay"></div>
+        </div>
+    </header>
+
+    <!-- 案例详情页面 -->
+    <main class="case-detail-page">
+        <div class="container">
+            <!-- 返回按钮 -->
+            <div class="back-nav animate-on-scroll">
+                <a href="cases.html">← 返回項目經驗</a>
+            </div>
+
+            <!-- 案例标题 -->
+            <section class="case-header animate-on-scroll">
+                <div class="case-category" id="case-category">案例加载中...</div>
+                <h1 id="case-title">加载中...</h1>
+            </section>
+
+            <!-- 案例内容（richtext HTML 直接注入） -->
+            <article class="case-content" id="case-content">
+                <div style="text-align:center;padding:60px 0;color:#888;">内容加载中...</div>
+            </article>
+
+            <!-- 行业标签 -->
+            <div id="case-industries" style="display:none;">
+                <p style="margin:2em 0 0;font-weight:bold;">相关行业：<span id="industry-tags"></span></p>
+            </div>
+
+            <!-- 底部导航 -->
+            <div class="case-footer animate-on-scroll">
+                <a href="cases.html" class="btn btn-primary">查看更多案例</a>
+                <a href="contact.html" class="btn btn-secondary">諮詢類似服務</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>埃森國際商務諮詢有限公司</h4>
+                    <p>專業跨境商務與項目落地顧問</p>
+                </div>
+                <div class="footer-col">
+                    <h4>服務內容</h4>
+                </div>
+                <div class="footer-col">
+                    <h4>關於我們</h4>
+                </div>
+                <div class="footer-col">
+                    <h4>聯繫我們</h4>
+                    <p>聯繫方式</p>
+                    <p>在線咨詢</p>
+                    <p>信息来源</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 埃森國際商務諮詢有限公司</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const CMS_API_BASE = 'http://127.0.0.1:1337';
+        const TOKEN = '4566e39fb70c3a1e3819ce9f27584fc2b7fae06f1e2f0c26f7bded2aff339f90978b2ea628f485f0d8baa3d7848398170329f13a47474a99b1f7ec4cd7900da458fa782f2162693885b65115b3c52f977c5620040c79326b3c12fe02bc2edfcb2821fbb0a460bbfa0d8dfe83d358ddbe3f3c9b226a3afdd5a7ffd1b8880e2989';
+
+        // 从 URL 参数获取类型
+        const params = new URLSearchParams(window.location.search);
+        const caseType = params.get('type') || '';
+
+        const CATEGORY_LABELS = {
+            'market-entry':         '企業市場進入與落地',
+            'investment':           '跨境投資與工廠設立',
+            'regional-operation':   '區域運營與業務擴展',
+            'compliance':           '合規與結構調整',
+            'brand-ip':            '品牌與知識產權出海',
+            'asset-optimization':   '跨境資金與資產優化',
+        };
+
+        async function api(path) {
+            const res = await fetch(CMS_API_BASE + path, {
+                headers: { Authorization: 'Bearer ' + TOKEN }
+            });
+            if (!res.ok) throw new Error(res.status);
+            return res.json();
+        }
+
+        async function init() {
+            if (!caseType) {
+                document.getElementById('case-title').textContent = '未指定案例类型';
+                return;
+            }
+
+            try {
+                // 按 category 枚举值筛选（Strapi v5 filters 语法）
+                const data = await api(`/api/cases?filters[category][$eq]=${caseType}&populate=*`);
+                const cases = Array.isArray(data) ? data : (data.data || []);
+                const c = cases[0];
+                if (!c) {
+                    document.getElementById('case-title').textContent = '未找到该案例';
+                    return;
+                }
+
+                // 标题
+                document.title = (c.metaTitle || c.title) + ' - 埃森國際商務諮詢有限公司';
+                document.getElementById('case-category').textContent = '案例｜' + (CATEGORY_LABELS[caseType] || caseType);
+                document.getElementById('case-title').textContent = c.title || '';
+
+                // richtext 内容直接注入
+                if (c.content) {
+                    document.getElementById('case-content').innerHTML = c.content;
+                }
+
+                // 行业标签
+                if (c.industries && c.industries.length) {
+                    const tags = c.industries.map(i => i.industry || '').filter(Boolean);
+                    if (tags.length) {
+                        document.getElementById('industry-tags').textContent = tags.join('、');
+                        document.getElementById('case-industries').style.display = '';
+                    }
+                }
+
+            } catch (e) {
+                console.error(e);
+                document.getElementById('case-title').textContent = '加载失败';
+            }
+
+            // 触发动画
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('animated'); });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+        }
+
+        // 汉堡菜单
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('.nav');
+        const navOverlay = document.querySelector('.nav-overlay');
+        if (menuToggle && nav) {
+            menuToggle.addEventListener('click', () => {
+                const isOpen = nav.classList.toggle('nav-open');
+                menuToggle.setAttribute('aria-expanded', isOpen);
+                navOverlay && navOverlay.classList.toggle('active', isOpen);
+            });
+            nav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    nav.classList.remove('nav-open');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    navOverlay && navOverlay.classList.remove('active');
+                });
+            });
+            navOverlay && navOverlay.addEventListener('click', () => {
+                nav.classList.remove('nav-open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                navOverlay.classList.remove('active');
+            });
+        }
+
+        init();
+    </script>
+</body>
+</html>

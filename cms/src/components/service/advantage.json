@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_service_advantages",
+  "info": {
+    "displayName": "Advantage",
+    "description": "服务优势卡片",
+    "icon": "award"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "allowedTypes": ["images"],
+      "type": "media",
+      "multiple": false
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

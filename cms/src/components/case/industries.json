@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_case_industries",
+  "info": {
+    "displayName": "Industry",
+    "description": "行业经验卡片",
+    "icon": "industry"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "allowedTypes": ["images"],
+      "type": "media",
+      "multiple": false
+    },
+    "industry": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

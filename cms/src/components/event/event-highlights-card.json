@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_event_event_highlights_card",
+  "info": {
+    "displayName": "Event Highlights Card",
+    "description": "核心卖点/媒体矩阵/课程模块类卡片",
+    "icon": "star"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "string",
+      "description": "图标emoji，如 🏆 📺 🌐"
+    },
+    "description": {
+      "type": "string",
+      "description": "简短描述（1行）"
+    },
+    "content": {
+      "type": "richtext",
+      "description": "详细richText内容"
+    }
+  }
+}

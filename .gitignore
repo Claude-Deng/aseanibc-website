@@ -46,3 +46,7 @@ yarn-error.log*
 
 # Dependencies
 node_modules/
+
+# Local backups and documentation (keep locally, don't push)
+*.backup
+*.md

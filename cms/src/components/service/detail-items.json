@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_service_detail_items",
+  "info": {
+    "displayName": "Service Detail Item",
+    "description": "服务详情子项",
+    "icon": "list"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

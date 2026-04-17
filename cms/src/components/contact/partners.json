@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_contact_partners",
+  "info": {
+    "displayName": "Contact Partner",
+    "description": "合作方名称",
+    "icon": "partner"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

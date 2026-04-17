@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "partners",
+  "info": {
+    "displayName": "Partner",
+    "description": "合作伙伴",
+    "singularName": "partner",
+    "pluralName": "partners"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": ["media", "chamber", "government", "enterprise", "other"],
+      "required": true
+    },
+    "displayOrder": {
+      "type": "integer",
+      "default": 0
+    },
+    "metaTitle": {
+      "type": "string"
+    },
+    "metaDescription": {
+      "type": "text"
+    }
+  }
+}

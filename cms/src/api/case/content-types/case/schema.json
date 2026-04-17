@@ -1,0 +1,77 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cases",
+  "info": {
+    "displayName": "Case",
+    "description": "项目案例",
+    "singularName": "case",
+    "pluralName": "cases"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "market-entry",
+        "investment",
+        "regional-operation",
+        "compliance",
+        "brand-ip",
+        "asset-optimization"
+      ],
+      "required": true
+    },
+    "slogan": {
+      "type": "string",
+      "required": true
+    },
+    "time": {
+      "type": "string",
+      "required": true
+    },
+    "location": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "coverImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "categoryIcon": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "testimonials": {
+      "type": "component",
+      "repeatable": true,
+      "component": "testimonial.testimonial"
+    },
+    "industries": {
+      "type": "component",
+      "repeatable": true,
+      "component": "case.industries"
+    },
+    "metaTitle": {
+      "type": "string"
+    },
+    "metaDescription": {
+      "type": "text"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    }
+  }
+}

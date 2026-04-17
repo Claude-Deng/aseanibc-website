@@ -11,6 +11,9 @@
     <header class="header">
         <div class="container">
             <div class="logo">埃森國際商務諮詢有限公司</div>
+            <button class="menu-toggle" aria-label="打开菜单" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
             <nav class="nav">
                 <a href="index.html">首页</a>
                 <a href="about.html">關於我們</a>
@@ -19,7 +22,9 @@
                 <a href="cases.html">項目經驗</a>
                 <a href="team.html">團隊介紹</a>
                 <a href="contact.html">聯繫我們</a>
+                <a href="news-sources.html">信息來源</a>
             </nav>
+            <div class="nav-overlay"></div>
         </div>
     </header>
 
@@ -31,78 +36,15 @@
                 <h1>出海活動</h1>
                 <p class="subtitle">連接優質資源，共創出海機遇</p>
             </div>
-    
-            <!-- 活动列表 -->
-            <div class="events-list">
-                <!-- 活动1：哥本哈根 -->
-                <div class="event-card animate-on-scroll">
-                    <div class="event-image">
-                        <img src="eventPic/thumb-copenhagen.jpg" alt="哥本哈根龍舟文化節">
-                    </div>
-                    <div class="event-content">
-                        <div class="event-meta">
-                            <span class="event-tag">商業考察</span>
-                            <span class="event-date">2026年5月29-31日</span>
-                        </div>
-                        <h2 class="event-title">哥本哈根龍舟文化節暨企業家考察團</h2>
-                        <p class="event-location">📍 丹麥哥本哈根南港Københavns Sydhavn</p>
-                        <p class="event-desc">央視策劃、政府背書的北歐高端商業對接活動，參與人數近10萬，媒體曝光率1億+，助力企業開拓歐洲市場。</p>
-                        <a href="event-copenhagen.html" class="btn btn-primary">了解詳情</a>
-                    </div>
-                </div>
-    
-                <!-- 活动2：费城夏令营 -->
-                <div class="event-card animate-on-scroll">
-                    <div class="event-image">
-                        <img src="eventPic/thumb-summercamp.jpg" alt="費城名校夏令營">
-                    </div>
-                    <div class="event-content">
-                        <div class="event-meta">
-                            <span class="event-tag">國際教育</span>
-                            <span class="event-date">每年暑期</span>
-                        </div>
-                        <h2 class="event-title">美國費城名校夏令營</h2>
-                        <p class="event-location">📍 美國費城、纽约、华盛顿</p>
-                        <p class="event-desc">以賓大為核心的藤校資源，8-15歲精英教育體驗，涵蓋AI與STEM科技探索、跨文化交流等課程模塊。貳至陸周</p>
-                        <a href="event-summer-camp.html" class="btn btn-primary">了解詳情</a>
-                    </div>
-                </div>
-    
-                <!-- 活动3：新西兰投资 -->
-                <div class="event-card animate-on-scroll">
-                    <div class="event-image">
-                        <img src="eventPic/thumb-nz.jpg" alt="新西蘭光伏投資">
-                    </div>
-                    <div class="event-content">
-                        <div class="event-meta">
-                            <span class="event-tag">海外投資</span>
-                            <span class="event-date">常年招募</span>
-                        </div>
-                        <h2 class="event-title">新西蘭光伏+儲能投資+移民項目</h2>
-                        <p class="event-location">📍 新西蘭</p>
-                        <p class="event-desc">綠色能源投資+新西蘭永居身份，一步到位。由新西蘭本土綜合性能源企業Daybreak Energy發起，擁有全牌照資質。</p>
-                        <a href="event-nz-investment.html" class="btn btn-primary">了解詳情</a>
-                    </div>
-                </div>
-    
-                <!-- 活动4：中欧论坛 -->
-                <div class="event-card animate-on-scroll">
-                    <div class="event-image">
-                        <img src="eventPic/thumb-tcm.jpg" alt="中歐論壇">
-                    </div>
-                    <div class="event-content">
-                        <div class="event-meta">
-                            <span class="event-tag">國際論壇</span>
-                            <span class="event-date">2025年舉辦</span>
-                        </div>
-                        <h2 class="event-title">中歐論壇暨塞納博覽會</h2>
-                        <p class="event-location">📍 法國巴黎</p>
-                        <p class="event-desc">以中醫藥出海為核心議題的高規格國際交流平台，匯聚中歐雙方政府官員、醫療健康專家，展創新成果。</p>
-                        <a href="event-tcm-forum.html" class="btn btn-primary">了解詳情</a>
-                    </div>
+
+            <!-- 活动列表（JS 动态渲染） -->
+            <div class="events-list" id="events-list">
+                <!-- 加载中占位 -->
+                <div class="loading-placeholder" style="text-align:center;padding:60px 0;color:#888;">
+                    載入中...
                 </div>
             </div>
-    
+
             <!-- 联系方式 -->
             <section class="events-contact animate-on-scroll">
                 <h2>聯繫我們</h2>
@@ -110,7 +52,11 @@
                 <div class="contact-simple">
                     <div class="contact-item">
                         <span>📞</span>
-                        <span>+8613423849513（微信：5311667）</span>
+                        <span>+8613423849513</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>💬</span>
+                        <span>微信：5311667</span>
                     </div>
                     <div class="contact-item">
                         <span>✉️</span>
@@ -120,7 +66,7 @@
             </section>
         </div>
     </main>
-    
+
     <!-- 页脚 -->
     <footer class="footer">
         <div class="container">
@@ -147,53 +93,126 @@
             </div>
         </div>
     </footer>
-    
+
     <script>
-        // 滚动动画
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+        const CMS_API_BASE = 'http://127.0.0.1:1337';
+        const API_TOKEN = '4566e39fb70c3a1e3819ce9f27584fc2b7fae06f1e2f0c26f7bded2aff339f90978b2ea628f485f0d8baa3d7848398170329f13a47474a99b1f7ec4cd7900da458fa782f2162693885b65115b3c52f977c5620040c79326b3c12fe02bc2edfcb2821fbb0a460bbfa0d8dfe83d358ddbe3f3c9b226a3afdd5a7ffd1b8880e2989';
+
+        // category enum → 中文标签（与 Event schema enum 对应）
+        const CATEGORY_LABELS = {
+            'business':    '商業考察',
+            'education':   '國際教育',
+            'investment':  '海外投資',
+            'forum':       '國際論壇',
         };
-    
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                }
+
+        // category → 详情页文件名（对应 4 个静态详情页）
+        const DETAIL_PAGE_MAP = {
+            'business':   'event-detail.html?type=business',
+            'education':  'event-detail.html?type=education',
+            'investment': 'event-detail.html?type=investment',
+            'forum':      'event-detail.html?type=forum',
+        };
+
+        async function api(path) {
+            const res = await fetch(CMS_API_BASE + path, {
+                headers: { 'Authorization': 'Bearer ' + API_TOKEN }
             });
-        }, observerOptions);
-    
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
+            if (!res.ok) throw new Error(`API ${res.status}: ${path}`);
+            return res.json();
+        }
+
+        function getImageUrl(img) {
+            if (!img) return '';
+            const url = (img.formats && img.formats.medium && img.formats.medium.url) || img.url || '';
+            return url.startsWith('http') ? url : CMS_API_BASE + url;
+        }
+
+        async function init() {
+            try {
+                const listEl = document.getElementById('events-list');
+                const data = await api('/api/events?populate=*&sort=createdAt:desc');
+
+                if (!data || data.length === 0) {
+                    listEl.innerHTML = '<p style="text-align:center;padding:60px 0;color:#888;">暫無活動資訊</p>';
+                    return;
+                }
+
+                listEl.innerHTML = '';
+                data.forEach(ev => {
+                    const tag = CATEGORY_LABELS[ev.category] || ev.category || '活動';
+                    const href = DETAIL_PAGE_MAP[ev.category] || 'events.html';
+                    const imgUrl = getImageUrl(ev.coverImage);
+                    const fallbackImg = 'eventPic/thumb-copenhagen.jpg';
+
+                    const card = document.createElement('div');
+                    card.className = 'event-card animate-on-scroll';
+                    card.innerHTML = `
+                        <div class="event-image">
+                            <img src="${imgUrl || fallbackImg}" alt="${ev.title || ''}">
+                        </div>
+                        <div class="event-content">
+                            <div class="event-meta">
+                                <span class="event-tag">${tag}</span>
+                                <span class="event-date">${ev.eventDate || ''}</span>
+                            </div>
+                            <h2 class="event-title">${ev.title || ''}</h2>
+                            <p class="event-location">📍 ${ev.location || ''}</p>
+                            <p class="event-desc">${ev.overview ? ev.overview.replace(/<[^>]+>/g, '').substring(0, 120) + '…' : ''}</p>
+                            <a href="${href}" class="btn btn-primary">了解詳情</a>
+                        </div>
+                    `;
+                    listEl.appendChild(card);
+                });
+
+                // 重新绑定动画
+                initScrollAnimation();
+
+            } catch (err) {
+                console.error(err);
+                document.getElementById('events-list').innerHTML =
+                    '<p style="text-align:center;padding:60px 0;color:#888;">載入失敗，請稍後重試</p>';
+            }
+        }
+
+        // 滚动动画
+        function initScrollAnimation() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+            document.querySelectorAll('.animate-on-scroll:not(.observed)').forEach(el => {
+                el.classList.add('observed');
+                observer.observe(el);
+            });
+        }
 
         // 汉堡菜单功能
-        const menuToggle = document.querySelector('.menu-toggle');
-        const nav = document.querySelector('.nav');
-        const navOverlay = document.querySelector('.nav-overlay');
-        
-        if (menuToggle && nav) {
-            // 点击汉堡按钮切换菜单
+        function initMenu() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('.nav');
+            const navOverlay = document.querySelector('.nav-overlay');
+
+            if (!menuToggle || !nav) return;
+
             menuToggle.addEventListener('click', () => {
                 const isOpen = nav.classList.toggle('nav-open');
                 menuToggle.setAttribute('aria-expanded', isOpen);
-                if (navOverlay) {
-                    navOverlay.classList.toggle('active', isOpen);
-                }
+                if (navOverlay) navOverlay.classList.toggle('active', isOpen);
             });
-            
-            // 点击导航链接关闭菜单
+
             nav.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     nav.classList.remove('nav-open');
                     menuToggle.setAttribute('aria-expanded', 'false');
-                    if (navOverlay) {
-                        navOverlay.classList.remove('active');
-                    }
+                    if (navOverlay) navOverlay.classList.remove('active');
                 });
             });
-            
-            // 点击遮罩层关闭菜单
+
             if (navOverlay) {
                 navOverlay.addEventListener('click', () => {
                     nav.classList.remove('nav-open');
@@ -202,6 +221,10 @@
                 });
             }
         }
+
+        initMenu();
+        initScrollAnimation();
+        init();
     </script>
 </body>
 </html>

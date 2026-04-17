@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_case_case_types",
+  "info": {
+    "displayName": "Case Type",
+    "description": "案例类型卡片",
+    "icon": "book"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "allowedTypes": ["images"],
+      "type": "media",
+      "multiple": false
+    },
+    "title": {
+      "type": "string"
+    },
+    "slogan": {
+      "type": "string"
+    },
+    "linkSlug": {
+      "type": "string"
+    }
+  }
+}

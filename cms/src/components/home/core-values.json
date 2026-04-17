@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_home_core_values",
+  "info": {
+    "displayName": "Core Value",
+    "description": "首页核心价值卡片",
+    "icon": "star"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

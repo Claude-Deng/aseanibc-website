@@ -1,0 +1,50 @@
+{
+  "kind": "singleType",
+  "collectionName": "contact_pages",
+  "info": {
+    "displayName": "ContactPage",
+    "description": "联系我们页面",
+    "singularName": "contact-page",
+    "pluralName": "contact-pages"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "introTitle": {
+      "type": "string"
+    },
+    "introText": {
+      "type": "text"
+    },
+    "contactEmail": {
+      "type": "email"
+    },
+    "contactPhone": {
+      "type": "string"
+    },
+    "contactWechat": {
+      "type": "string"
+    },
+    "contactAddressCN": {
+      "type": "text"
+    },
+    "contactAddressTH": {
+      "type": "text"
+    },
+    "partnersTitle": {
+      "type": "string"
+    },
+    "partners": {
+      "type": "component",
+      "repeatable": true,
+      "component": "contact.partners"
+    },
+    "metaTitle": {
+      "type": "string"
+    },
+    "metaDescription": {
+      "type": "text"
+    }
+  }
+}

@@ -32,15 +32,15 @@
     <main class="contact-page">
         <div class="container">
             <!-- 联系我们标题 -->
-            <section class="contact-intro animate-on-scroll">
-                <h1>聯繫我們</h1>
-                <p class="intro-text">無論您身處出海的哪一階段，我們皆以專業判斷與協同能力，為企業提供穩健而長期的顧問支持。</p>
+            <section class="contact-intro animate-on-scroll" id="contactIntro">
+                <h1 id="introTitle">聯繫我們</h1>
+                <p class="intro-text" id="introText">無論您身處出海的哪一階段，我們皆以專業判斷與協同能力，為企業提供穩健而長期的顧問支持。</p>
             </section>
 
             <!-- 联系方式 -->
-            <section class="contact-info-section animate-on-scroll">
+            <section class="contact-info-section animate-on-scroll" id="contactInfoSection">
                 <h2>聯繫方式</h2>
-                <div class="contact-list">
+                <div class="contact-list" id="contactList">
                     <div class="contact-item">
                         <span class="contact-dot">•</span>
                         <span class="contact-text">contact@nanyuhengdao.com</span>
@@ -62,7 +62,7 @@
 
             <!-- 合作伙伴 -->
             <section class="partners-section animate-on-scroll">
-                <h2>合作夥伴</h2>
+                <h2 id="partnersTitle">合作夥伴</h2>
                 
                 <div class="partners-wall" id="partnersWall">
                     <span class="partner-tag">人民日報</span>
@@ -145,79 +145,24 @@
     </footer>
 
     <script>
-        // 滚动动画
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // ─── 配置 ───────────────────────────────────────────────────────────
+        const API_BASE = 'http://127.0.0.1:1337';
+        const API_TOKEN = '4566e39fb70c3a1e3819ce9f27584fc2b7fae06f1e2f0c26f7bded2aff339f90978b2ea628f485f0d8baa3d7848398170329f13a47474a99b1f7ec4cd7900da458fa782f2162693885b65115b3c52f977c5620040c79326b3c12fe02bc2edfcb2821fbb0a460bbfa0d8dfe83d358ddbe3f3c9b226a3afdd5a7ffd1b8880e2989';
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                }
-            });
-        }, observerOptions);
-
-        // 观察所有需要动画的元素
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
-
-        // 汉堡菜单功能
-        const menuToggle = document.querySelector('.menu-toggle');
-        const nav = document.querySelector('.nav');
-        const navOverlay = document.querySelector('.nav-overlay');
-        
-        if (menuToggle && nav) {
-            // 点击汉堡按钮切换菜单
-            menuToggle.addEventListener('click', () => {
-                const isOpen = nav.classList.toggle('nav-open');
-                menuToggle.setAttribute('aria-expanded', isOpen);
-                if (navOverlay) {
-                    navOverlay.classList.toggle('active', isOpen);
-                }
-            });
-            
-            // 点击导航链接关闭菜单
-            nav.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    nav.classList.remove('nav-open');
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    if (navOverlay) {
-                        navOverlay.classList.remove('active');
-                    }
-                });
-            });
-            
-            // 点击遮罩层关闭菜单
-            if (navOverlay) {
-                navOverlay.addEventListener('click', () => {
-                    nav.classList.remove('nav-open');
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    navOverlay.classList.remove('active');
-                });
-            }
-        }
-        
-        // 合作伙伴按行着色
+        // ─── 合作伙伴按行着色 ───────────────────────────────────────────────
         function colorizePartnerRows() {
             const wall = document.getElementById('partnersWall');
             if (!wall) return;
-            
+
             const tags = wall.querySelectorAll('.partner-tag');
             if (tags.length === 0) return;
-            
-            // 清除旧的颜色类
-            tags.forEach(tag => {
-                tag.className = 'partner-tag';
-            });
-            
-            // 计算每一行有哪些标签
+
+            tags.forEach(tag => { tag.className = 'partner-tag'; });
+
             const rows = [];
             let currentRow = [];
             let currentRowTop = tags[0].offsetTop;
-            
+
             tags.forEach(tag => {
                 if (tag.offsetTop === currentRowTop) {
                     currentRow.push(tag);
@@ -227,22 +172,145 @@
                     currentRowTop = tag.offsetTop;
                 }
             });
-            if (currentRow.length > 0) {
-                rows.push(currentRow);
-            }
-            
-            // 给每一行分配颜色 (赤橙黄绿青蓝紫)
+            if (currentRow.length > 0) rows.push(currentRow);
+
             rows.forEach((row, index) => {
                 const colorClass = 'row-color-' + (index % 7);
-                row.forEach(tag => {
-                    tag.classList.add(colorClass);
-                });
+                row.forEach(tag => tag.classList.add(colorClass));
             });
         }
-        
-        // 页面加载时执行
-        window.addEventListener('load', colorizePartnerRows);
-        // 窗口大小变化时重新计算
+
+        // ─── 渲染联系方式 ───────────────────────────────────────────────────
+        function renderContactInfo(cp) {
+            const list = document.getElementById('contactList');
+            if (!list) return;
+
+            const items = [];
+            if (cp.contactEmail)     items.push(cp.contactEmail);
+            if (cp.contactPhone) {
+                const phoneText = cp.contactWechat
+                    ? `${cp.contactPhone}（微信：${cp.contactWechat}）`
+                    : cp.contactPhone;
+                items.push(phoneText);
+            }
+            if (cp.contactAddressCN) items.push(cp.contactAddressCN);
+            if (cp.contactAddressTH) items.push(cp.contactAddressTH);
+
+            if (items.length === 0) return;
+
+            list.innerHTML = items.map(text => `
+                <div class="contact-item">
+                    <span class="contact-dot">•</span>
+                    <span class="contact-text">${text}</span>
+                </div>
+            `).join('');
+        }
+
+        // ─── 渲染合作伙伴墙 ─────────────────────────────────────────────────
+        function renderPartners(partners) {
+            const wall = document.getElementById('partnersWall');
+            if (!wall || !Array.isArray(partners) || partners.length === 0) return;
+
+            wall.innerHTML = partners
+                .map(p => `<span class="partner-tag">${p.name || ''}</span>`)
+                .join('');
+
+            // DOM 渲染完成后再着色
+            setTimeout(colorizePartnerRows, 0);
+        }
+
+        // ─── 主加载逻辑 ─────────────────────────────────────────────────────
+        async function loadContactPage() {
+            try {
+                const res = await fetch(
+                    `${API_BASE}/api/contact-page?populate=*`,
+                    { headers: { Authorization: `Bearer ${API_TOKEN}` } }
+                );
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const data = await res.json();
+
+                // Strapi v5 单例类型：直接返回对象（不是数组）
+                const cp = data.data || data;
+                if (!cp) throw new Error('No data');
+
+                // intro 区
+                const introTitleEl = document.getElementById('introTitle');
+                const introTextEl  = document.getElementById('introText');
+                if (introTitleEl && cp.introTitle) introTitleEl.textContent = cp.introTitle;
+                if (introTextEl  && cp.introText)  introTextEl.textContent  = cp.introText;
+
+                // 合作伙伴标题
+                const partnersTitleEl = document.getElementById('partnersTitle');
+                if (partnersTitleEl && cp.partnersTitle) partnersTitleEl.textContent = cp.partnersTitle;
+
+                // 联系方式
+                renderContactInfo(cp);
+
+                // 合作伙伴墙（从 Partners 集合读取，33条数据）
+                const partnersRes = await fetch(
+                    `${API_BASE}/api/partners?populate=*`,
+                    { headers: { Authorization: `Bearer ${API_TOKEN}` } }
+                );
+                if (partnersRes.ok) {
+                    const partnersData = await partnersRes.json();
+                    const partnersList = partnersData.data || [];
+                    if (partnersList.length > 0) {
+                        renderPartners(partnersList);
+                    } else {
+                        colorizePartnerRows(); // 集合为空，保留静态 HTML 并着色
+                    }
+                } else {
+                    colorizePartnerRows(); // fetch 失败，保留静态 HTML 并着色
+                }
+
+            } catch (err) {
+                console.error('[contact] CMS load failed, using static content:', err);
+                // 加载失败时保留静态 HTML，仍需着色
+                colorizePartnerRows();
+            }
+        }
+
+        // ─── 滚动动画 ────────────────────────────────────────────────────────
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('animated');
+            });
+        }, observerOptions);
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+        // ─── 汉堡菜单 ────────────────────────────────────────────────────────
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('.nav');
+        const navOverlay = document.querySelector('.nav-overlay');
+
+        if (menuToggle && nav) {
+            menuToggle.addEventListener('click', () => {
+                const isOpen = nav.classList.toggle('nav-open');
+                menuToggle.setAttribute('aria-expanded', isOpen);
+                if (navOverlay) navOverlay.classList.toggle('active', isOpen);
+            });
+            nav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    nav.classList.remove('nav-open');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    if (navOverlay) navOverlay.classList.remove('active');
+                });
+            });
+            if (navOverlay) {
+                navOverlay.addEventListener('click', () => {
+                    nav.classList.remove('nav-open');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    navOverlay.classList.remove('active');
+                });
+            }
+        }
+
+        // ─── 启动 ────────────────────────────────────────────────────────────
+        window.addEventListener('load', loadContactPage);
         let resizeTimer;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimer);

@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "media_sources",
+  "info": {
+    "displayName": "MediaSource",
+    "description": "信息来源",
+    "singularName": "media-source",
+    "pluralName": "media-sources"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": ["domestic", "international"],
+      "required": true
+    },
+    "region": {
+      "type": "enumeration",
+      "enum": ["beijing", "shanghai", "guangdong", "usa", "uk", "japan", "sea", "other"],
+      "required": true
+    },
+    "category": {
+      "type": "string",
+      "required": false
+    },
+    "url": {
+      "type": "string"
+    },
+    "displayOrder": {
+      "type": "integer",
+      "default": 0
+    },
+    "metaTitle": {
+      "type": "string"
+    },
+    "metaDescription": {
+      "type": "text"
+    }
+  }
+}

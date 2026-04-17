@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_testimonial_testimonials",
+  "info": {
+    "displayName": "Testimonial",
+    "description": "客户评价组件",
+    "icon": "quote"
+  },
+  "options": {},
+  "attributes": {
+    "reviewerName": {
+      "type": "string"
+    },
+    "reviewerTitle": {
+      "type": "string"
+    },
+    "reviewerAvatar": {
+      "allowedTypes": ["images"],
+      "type": "media",
+      "multiple": false
+    },
+    "reviewContent": {
+      "type": "richtext"
+    }
+  }
+}

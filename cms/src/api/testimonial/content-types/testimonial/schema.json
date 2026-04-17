@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "testimonials",
+  "info": {
+    "displayName": "Testimonial",
+    "description": "客户评价",
+    "singularName": "testimonial",
+    "pluralName": "testimonials"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "reviewerName": {
+      "type": "string",
+      "required": true
+    },
+    "reviewerTitle": {
+      "type": "string"
+    },
+    "reviewerAvatar": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "reviewContent": {
+      "type": "richtext",
+      "required": true
+    },
+    "casesPage": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::cases-page.cases-page",
+      "inversedBy": "testimonials"
+    }
+  }
+}

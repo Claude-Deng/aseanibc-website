@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_about_regions",
+  "info": {
+    "displayName": "Region",
+    "description": "覆盖区域",
+    "icon": "globe"
+  },
+  "options": {},
+  "attributes": {
+    "country": {
+      "type": "string"
+    },
+    "cities": {
+      "type": "text"
+    }
+  }
+}

@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信息来源中心 - 埃森国际商务咨询有限公司</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 信息来源中心专属样式 - 全新设计 */
+        .news-sources-page {
+            padding: calc(var(--space-xl) + 80px) 0 var(--space-xl);
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            min-height: calc(100vh - 200px);
+        }
+
+        .news-sources-page .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+        }
+
+        /* 页面标题区 */
+        .sources-header {
+            text-align: center;
+            margin-bottom: var(--space-lg);
+            padding: var(--space-sm) 0;
+        }
+
+        .sources-header h1 {
+            font-size: 40px;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-bottom: var(--space-sm);
+            letter-spacing: 2px;
+        }
+
+        .sources-header .subtitle {
+            font-size: var(--font-size-base);
+            color: var(--color-text-secondary);
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* 统计信息 - 简化设计 */
+        .sources-stats {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-lg);
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: var(--space-sm) var(--space-xl);
+            background: white;
+            border-radius: 50px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            min-width: 120px;
+        }
+
+        .stat-number {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--color-primary);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin-top: 2px;
+        }
+
+        /* 分类Tab - 椭圆形 */
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-xl);
+            flex-wrap: wrap;
+        }
+
+        .category-tab {
+            padding: var(--space-xs) var(--space-2xl);
+            border: 2px solid var(--color-border);
+            background: white;
+            border-radius: 50px;
+            font-size: var(--font-size-base);
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 140px;
+        }
+
+        .category-tab:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+        }
+
+        .category-tab.active {
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+            color: white;
+            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
+        }
+
+        /* 内容区域 */
+        .sources-content {
+            display: none;
+        }
+
+        .sources-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 地区分组 */
+        .region-group {
+            margin-bottom: var(--space-xl);
+        }
+
+        .region-title {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: var(--space-md);
+            padding-left: var(--space-md);
+            border-left: 4px solid var(--color-primary);
+        }
+
+        /* 网格卡片布局 - 固定5列 */
+        .sources-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: var(--space-md);
+        }
+
+        /* 媒体卡片 - 简洁设计 */
+        .source-card {
+            background: white;
+            border-radius: 12px;
+            padding: var(--space-md);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            min-height: 80px;
+            justify-content: center;
+            position: relative;
+        }
+
+        .source-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            border-color: var(--color-primary);
+        }
+
+        .source-card .source-name {
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            color: var(--color-text-primary);
+            line-height: 1.4;
+            margin-bottom: 4px;
+        }
+
+        .source-card .source-type {
+            font-size: var(--font-size-xs);
+            color: var(--color-text-tertiary);
+        }
+
+        .source-card .source-region {
+            font-size: 10px;
+            color: var(--color-primary);
+            font-weight: 500;
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* 外部链接图标 */
+        .external-icon {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            width: 14px;
+            height: 14px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            color: var(--color-primary);
+        }
+
+        .source-card:hover .external-icon {
+            opacity: 1;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 1024px) {
+            .sources-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sources-header h1 {
+                font-size: 28px;
+            }
+
+            .sources-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: var(--space-sm);
+            }
+
+            .source-card {
+                padding: var(--space-sm);
+                min-height: 70px;
+            }
+
+            .category-tab {
+                padding: var(--space-xs) var(--space-lg);
+                font-size: var(--font-size-sm);
+                min-width: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sources-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-item {
+                min-width: 100px;
+                padding: var(--space-xs) var(--space-md);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">埃森国际商务咨询有限公司</div>
+            <button class="menu-toggle" aria-label="打开菜单" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+            <nav class="nav">
+                <a href="index.html">首页</a>
+                <a href="about.html">關於我們</a>
+                <a href="services.html">服務內容</a>
+                <a href="events.html">出海活動</a>
+                <a href="cases.html">項目經驗</a>
+                <a href="team.html">團隊介紹</a>
+                <a href="contact.html">聯繫我們</a>
+                <a href="news-sources.html" class="active">信息來源</a>
+            </nav>
+            <div class="nav-overlay"></div>
+        </div>
+    </header>
+
+    <!-- 信息来源中心页面 -->
+    <main class="news-sources-page">
+        <div class="container">
+            <!-- 页面标题 -->
+            <section class="sources-header animate-on-scroll">
+                <h1>信息來源中心</h1>
+                <p class="subtitle">匯聚全球權威媒體資源，為您提供商業資訊與市場洞察</p>
+            </section>
+
+            <!-- 统计信息 -->
+            <section class="sources-stats animate-on-scroll">
+                <div class="stat-item">
+                    <span class="stat-number">60+</span>
+                    <div class="stat-label">國內媒體</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">40+</span>
+                    <div class="stat-label">國際媒體</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">20+</span>
+                    <div class="stat-label">覆蓋國家/地區</div>
+                </div>
+            </section>
+
+            <!-- 分类Tab -->
+            <div class="category-tabs animate-on-scroll">
+                <button class="category-tab active" data-category="domestic">國內媒體</button>
+                <button class="category-tab" data-category="international">國際媒體</button>
+            </div>
+
+            <!-- 国内媒体内容 -->
+            <div class="sources-content active" id="domestic-content">
+                <!-- 北京市 -->
+                <div class="region-group animate-on-scroll">
+                    <h3 class="region-title">北京市</h3>
+                    <div class="sources-grid">
+                        <a href="http://paper.people.com.cn/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">人民日報</div>
+                            <div class="source-type">中央級黨報</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="https://www.takefoto.cn/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">北京日報</div>
+                            <div class="source-type">地方黨報</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="http://epaper.bjnews.com.cn/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">新京報</div>
+                            <div class="source-type">綜合日報</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="https://paper.huanqiu.com/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">環球時報</div>
+                            <div class="source-type">國際新聞</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="http://zqb.cyol.com/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">中國青年報</div>
+                            <div class="source-type">青年媒體</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="http://www.chinadaily.com.cn" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">中國日報</div>
+                            <div class="source-type">英文報紙</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="http://epaper.gmw.cn/gmrb/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">光明日報</div>
+                            <div class="source-type">知識分子</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 上海市 -->
+                <div class="region-group animate-on-scroll">
+                    <h3 class="region-title">上海市</h3>
+                    <div class="sources-grid">
+                        <a href="https://www.shine.cn/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">上海日報</div>
+                            <div class="source-type">英文日報</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="https://paper.xinmin.cn/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">新民晚報</div>
+                            <div class="source-type">綜合晚報</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="http://ep.shxwcb.com/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">新聞晨報</div>
+                            <div class="source-type">都市晨報</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="https://www.yicai.com/epaper/pc/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">第一財經</div>
+                            <div class="source-type">財經媒體</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="http://paper.cnstock.com/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">上海證券報</div>
+                            <div class="source-type">證券財經</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="http://www.why.com.cn/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">青年報</div>
+                            <div class="source-type">青年媒體</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 广东省 -->
+                <div class="region-group animate-on-scroll">
+                    <h3 class="region-title">廣東省</h3>
+                    <div class="sources-grid">
+                        <a href="http://epaper.southcn.com/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">南方日報</div>
+                            <div class="source-type">省級黨報</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="http://www.ycwb.com/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">羊城晚報</div>
+                            <div class="source-type">綜合晚報</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="http://epaper.oeeee.com/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">南方都市報</div>
+                            <div class="source-type">都市報</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="http://www.sznews.com/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">深圳特區報</div>
+                            <div class="source-type">地方黨報</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="http://www.21cbh.com/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">21世紀經濟</div>
+                            <div class="source-type">財經媒體</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 江苏省 -->
+                <div class="region-group animate-on-scroll">
+                    <h3 class="region-title">江蘇省</h3>
+                    <div class="sources-grid">
+                        <a href="http://epaper.jschina.com.cn/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">新華日報</div>
+                            <div class="source-type">省級黨報</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="http://epaper.yangtse.com/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">揚子晚報</div>
+                            <div class="source-type">綜合晚報</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 浙江省 -->
+                <div class="region-group animate-on-scroll">
+                    <h3 class="region-title">浙江省</h3>
+                    <div class="sources-grid">
+                        <a href="http://www.zjnews.com.cn/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">浙江日報</div>
+                            <div class="source-type">省級黨報</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="http://www.qjwb.com.cn/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">錢江晚報</div>
+                            <div class="source-type">綜合晚報</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="http://www.hznews.com/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">杭州日報</div>
+                            <div class="source-type">地方黨報</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="http://www.eeo.com.cn/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">經濟觀察報</div>
+                            <div class="source-type">財經媒體</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 其他省份精选 -->
+                <div class="region-group animate-on-scroll">
+                    <h3 class="region-title">其他省市精選</h3>
+                    <div class="sources-grid">
+                        <a href="http://epaper.tianjinwe.com/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">天津日報</div>
+                            <div class="source-type">天津</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="http://epaper.cqwb.com.cn/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">重慶晚報</div>
+                            <div class="source-type">重慶</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="http://epaper.scdaily.cn/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">四川日報</div>
+                            <div class="source-type">四川</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="http://epaper.hubeidaily.net/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">湖北日報</div>
+                            <div class="source-type">湖北</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="http://epaper.voc.com.cn/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">湖南日報</div>
+                            <div class="source-type">湖南</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="http://epaper.dahe.cn/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">河南日報</div>
+                            <div class="source-type">河南</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="http://epaper.sdnews.com/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">大眾日報</div>
+                            <div class="source-type">山東</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="http://epaper.sxrb.com/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">山西日報</div>
+                            <div class="source-type">山西</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="http://epaper.nfdaily.cn/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">福建日報</div>
+                            <div class="source-type">福建</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="http://epaper.cnjiwang.com/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">吉林日報</div>
+                            <div class="source-type">吉林</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 国际媒体内容 -->
+            <div class="sources-content" id="international-content">
+                <!-- 美国 -->
+                <div class="region-group animate-on-scroll">
+                    <h3 class="region-title">美國</h3>
+                    <div class="sources-grid">
+                        <a href="https://www.nytimes.com" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">紐約時報</div>
+                            <div class="source-type">綜合日報</div>
+                            <div class="source-region">USA</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="https://www.wsj.com/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">華爾街日報</div>
+                            <div class="source-type">財經日報</div>
+                            <div class="source-region">USA</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="https://www.washingtonpost.com/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">華盛頓郵報</div>
+                            <div class="source-type">綜合日報</div>
+                            <div class="source-region">USA</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="https://www.cnn.com" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">CNN</div>
+                            <div class="source-type">電視新聞</div>
+                            <div class="source-region">USA</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 英国 -->
+                <div class="region-group animate-on-scroll">
+                    <h3 class="region-title">英國</h3>
+                    <div class="sources-grid">
+                        <a href="https://www.bbc.com/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">BBC</div>
+                            <div class="source-type">公共廣播</div>
+                            <div class="source-region">UK</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="https://www.thetimes.co.uk/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">泰晤士報</div>
+                            <div class="source-type">綜合日報</div>
+                            <div class="source-region">UK</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="https://www.theguardian.com/international" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">衛報</div>
+                            <div class="source-type">綜合日報</div>
+                            <div class="source-region">UK</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="https://www.ft.com/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">金融時報</div>
+                            <div class="source-type">財經日報</div>
+                            <div class="source-region">UK</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="https://www.economist.com/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">經濟學人</div>
+                            <div class="source-type">週刊</div>
+                            <div class="source-region">UK</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 日本 -->
+                <div class="region-group animate-on-scroll">
+                    <h3 class="region-title">日本</h3>
+                    <div class="sources-grid">
+                        <a href="https://www.asahi.com/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">朝日新聞</div>
+                            <div class="source-type">綜合日報</div>
+                            <div class="source-region">Japan</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="https://www.yomiuri.co.jp/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">讀賣新聞</div>
+                            <div class="source-type">綜合日報</div>
+                            <div class="source-region">Japan</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="http://www.mainichi.co.jp" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">每日新聞</div>
+                            <div class="source-type">綜合日報</div>
+                            <div class="source-region">Japan</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="https://www.japantimes.co.jp/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">日本時報</div>
+                            <div class="source-type">英文日報</div>
+                            <div class="source-region">Japan</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 东南亚 -->
+                <div class="region-group animate-on-scroll">
+                    <h3 class="region-title">東南亞</h3>
+                    <div class="sources-grid">
+                        <a href="https://www.zaobao.com/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">聯合早報</div>
+                            <div class="source-type">中文日報</div>
+                            <div class="source-region">Singapore</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="https://www.straitstimes.com/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">海峽時報</div>
+                            <div class="source-type">英文日報</div>
+                            <div class="source-region">Singapore</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="http://www.businesstimes.com.sg/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">商業時報</div>
+                            <div class="source-type">財經日報</div>
+                            <div class="source-region">Singapore</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="https://www.bangkokpost.com/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">曼谷郵報</div>
+                            <div class="source-type">英文日報</div>
+                            <div class="source-region">Thailand</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="http://thestar.com.my/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">星報</div>
+                            <div class="source-type">英文日報</div>
+                            <div class="source-region">Malaysia</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 欧洲其他国家 -->
+                <div class="region-group animate-on-scroll">
+                    <h3 class="region-title">歐洲其他國家</h3>
+                    <div class="sources-grid">
+                        <a href="http://www.lefigaro.fr/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">費加羅報</div>
+                            <div class="source-type">綜合日報</div>
+                            <div class="source-region">France</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="https://www.liberation.fr/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">解放報</div>
+                            <div class="source-type">綜合日報</div>
+                            <div class="source-region">France</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="https://www.welt.de/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">世界報</div>
+                            <div class="source-type">綜合日報</div>
+                            <div class="source-region">Germany</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="https://www.sueddeutsche.de" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">南德日報</div>
+                            <div class="source-type">綜合日報</div>
+                            <div class="source-region">Germany</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="https://www.themoscowtimes.com/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">莫斯科時報</div>
+                            <div class="source-type">英文日報</div>
+                            <div class="source-region">Russia</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 澳洲加拿大 -->
+                <div class="region-group animate-on-scroll">
+                    <h3 class="region-title">澳洲與加拿大</h3>
+                    <div class="sources-grid">
+                        <a href="http://www.smh.com.au/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">悉尼晨鋒報</div>
+                            <div class="source-type">綜合日報</div>
+                            <div class="source-region">Australia</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="http://www.afr.com.au/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">澳洲金融評論</div>
+                            <div class="source-type">財經日報</div>
+                            <div class="source-region">Australia</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="https://www.theglobeandmail.com/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">環球郵報</div>
+                            <div class="source-type">綜合日報</div>
+                            <div class="source-region">Canada</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                        <a href="https://www.thestar.com/" target="_blank" rel="noopener noreferrer" class="source-card">
+                            <div class="source-name">多倫多星報</div>
+                            <div class="source-type">綜合日報</div>
+                            <div class="source-region">Canada</div>
+                            <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>埃森国际商务咨询有限公司</h4>
+                    <p>專業跨境商務與項目落地顧問</p>
+                </div>
+                <div class="footer-col">
+                    <h4>服務內容</h4>
+                    <ul>
+                        <li><a href="services.html">出海判斷</a></li>
+                        <li><a href="services.html">落地推進</a></li>
+                        <li><a href="services.html">長期顧問</a></li>
+                        <li><a href="services.html">政策顧問</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>關於我們</h4>
+                    <ul>
+                        <li><a href="about.html">公司簡介</a></li>
+                        <li><a href="about.html">核心團隊</a></li>
+                        <li><a href="about.html">聯絡我們</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>聯繫我們</h4>
+                    <ul>
+                        <li><a href="contact.html">聯繫方式</a></li>
+                        <li><a href="contact.html">在線咨詢</a></li>
+                        <li><a href="news-sources.html">信息来源</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 埃森国际商务咨询有限公司</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 滚动动画
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        // 观察所有需要动画的元素
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 汉堡菜单功能
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('.nav');
+        const navOverlay = document.querySelector('.nav-overlay');
+        
+        if (menuToggle && nav) {
+            menuToggle.addEventListener('click', () => {
+                const isOpen = nav.classList.toggle('nav-open');
+                menuToggle.setAttribute('aria-expanded', isOpen);
+                if (navOverlay) {
+                    navOverlay.classList.toggle('active', isOpen);
+                }
+            });
+            
+            nav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    nav.classList.remove('nav-open');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    if (navOverlay) {
+                        navOverlay.classList.remove('active');
+                    }
+                });
+            });
+            
+            if (navOverlay) {
+                navOverlay.addEventListener('click', () => {
+                    nav.classList.remove('nav-open');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    navOverlay.classList.remove('active');
+                });
+            }
+        }
+
+        // Tab切换功能
+        const tabs = document.querySelectorAll('.category-tab');
+        const contents = document.querySelectorAll('.sources-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const category = tab.dataset.category;
+                
+                // 切换Tab样式
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // 切换内容
+                contents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === category + '-content') {
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

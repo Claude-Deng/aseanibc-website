@@ -1,0 +1,47 @@
+{
+  "kind": "singleType",
+  "collectionName": "cases_pages",
+  "info": {
+    "displayName": "Case Listing",
+    "description": "项目经验列表页",
+    "singularName": "cases-page",
+    "pluralName": "cases-pages"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "introTitle": {
+      "type": "string",
+      "required": true
+    },
+    "introText": {
+      "type": "richtext"
+    },
+    "caseTypes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "case.case-types"
+    },
+    "industryTitle": {
+      "type": "string"
+    },
+    "industrySubtitle": {
+      "type": "richtext"
+    },
+    "industryExample": {
+      "type": "richtext"
+    },
+    "industries": {
+      "type": "component",
+      "repeatable": true,
+      "component": "case.industries"
+    },
+    "testimonials": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::testimonial.testimonial",
+      "mappedBy": "casesPage"
+    }
+  }
+}

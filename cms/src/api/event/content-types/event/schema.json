@@ -1,0 +1,105 @@
+{
+  "kind": "collectionType",
+  "collectionName": "events",
+  "info": {
+    "displayName": "Event",
+    "description": "出海活动",
+    "singularName": "event",
+    "pluralName": "events"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": ["business", "education", "investment", "forum"],
+      "required": true
+    },
+    "eventDate": {
+      "type": "string",
+      "required": true
+    },
+    "location": {
+      "type": "string",
+      "required": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["upcoming", "ongoing", "ended"],
+      "required": true,
+      "default": "upcoming"
+    },
+    "overview": {
+      "type": "richtext",
+      "required": true
+    },
+    "background": {
+      "type": "richtext"
+    },
+    "highlights": {
+      "type": "richtext"
+    },
+    "partners": {
+      "type": "richtext"
+    },
+    "boothServices": {
+      "type": "richtext"
+    },
+    "itinerary": {
+      "type": "richtext"
+    },
+    "recommendedFor": {
+      "type": "richtext"
+    },
+    "serviceAdvantage": {
+      "type": "richtext"
+    },
+    "contactInfo": {
+      "type": "richtext"
+    },
+    "coverImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "gallery": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "metaTitle": {
+      "type": "string"
+    },
+    "metaDescription": {
+      "type": "text"
+    },
+    "scale": {
+      "type": "string",
+      "description": "活动规模，如预计10万+参与者"
+    },
+    "servicesOffered": {
+      "type": "component",
+      "repeatable": true,
+      "component": "event.services-offered"
+    },
+    "logistics": {
+      "type": "component",
+      "repeatable": true,
+      "component": "event.event-logistics-card",
+      "description": "行程/住宿/保障类内容块"
+    },
+    "highlightCards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "event.event-highlights-card",
+      "description": "核心卖点/媒体矩阵/课程模块等卡片"
+    }
+  }
+}
